@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a5257dfba464b438ba5ba21509960b, type: 3}
+  m_Name: FifthKeyItem
+  m_EditorClassIdentifier: 
+  itemName: Key5
+  maximumAmount: 1
+  itemPrefab: {fileID: 648488878721358156, guid: 17b200ecf6b3e0d4eb3f46bf1eb328dc, type: 3}
+  icon: {fileID: 21300000, guid: cad1ecb99203219468f5579d2516d2a1, type: 3}
+  itemType: 6
+  isConsumeable: 0
+  inHandName: Card_5
+  keyID: 555
+  changeHealth: 0
+  healAmount: 0
