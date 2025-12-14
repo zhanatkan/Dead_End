@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public GameObject UIBG; // renamed
+    public GameObject UIBG; 
     public GameObject crosshair;
     public Transform inventoryPanel;
     public Transform quickslotPanel;
@@ -16,11 +16,12 @@ public class InventoryManager : MonoBehaviour
     private Camera mainCamera;
 
     private Outline lastOutlineObject;
-    // Start is called before the first frame update
+    
     private void Awake()
     {
         UIBG.SetActive(true);
     }
+    
     void Start()
     {
         mainCamera = Camera.main;
@@ -40,10 +41,9 @@ public class InventoryManager : MonoBehaviour
         }
 
         UIBG.SetActive(false);
-        inventoryPanel.gameObject.SetActive(false);//new line
+        inventoryPanel.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -52,20 +52,18 @@ public class InventoryManager : MonoBehaviour
             if (isOpened)
             {
                 UIBG.SetActive(true);
-                inventoryPanel.gameObject.SetActive(true); // new line
+                inventoryPanel.gameObject.SetActive(true); 
                 crosshair.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
-                // и делаем его невидимым
                 Cursor.visible = true;
 
             }
             else
             {
                 UIBG.SetActive(false);
-                inventoryPanel.gameObject.SetActive(false); // new line
+                inventoryPanel.gameObject.SetActive(false); 
                 crosshair.SetActive(true);
                 Cursor.lockState = CursorLockMode.Locked;
-                // и делаем его невидимым
                 Cursor.visible = false;
             }
         }
@@ -98,6 +96,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+    
     public InventorySlot FindItemSlot(ItemType itemType)
     {
         foreach (var slot in slots)
@@ -109,12 +108,11 @@ public class InventoryManager : MonoBehaviour
         }
         return null;
     }
-    public void AddItem(ItemScriptableObject _item, int _amount)
+    
+    private void AddItem(ItemScriptableObject _item, int _amount)
     {
         foreach (InventorySlot slot in slots)
         {
-            // Стакаем предметы вместе
-            // В слоте уже имеется этот предмет
             if (slot.item == _item)
             {
                 if (slot.amount + _amount <= _item.maximumAmount)
@@ -126,16 +124,16 @@ public class InventoryManager : MonoBehaviour
                 break;
             }
         }
+        
         foreach (InventorySlot slot in slots)
         {
-            // добавляем предметы в свободные ячейки
-            if (slot.isEmpty == true)
+            if (slot.isEmpty)
             {
                 slot.item = _item;
                 slot.amount = _amount;
                 slot.isEmpty = false;
                 slot.SetIcon(_item.icon);
-                if (slot.item.maximumAmount != 1) // added this if statement for single items
+                if (slot.item.maximumAmount != 1)
                 {
                     slot.itemAmountText.text = _amount.ToString();
                 }

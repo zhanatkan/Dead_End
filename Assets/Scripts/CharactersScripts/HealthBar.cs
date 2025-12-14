@@ -26,7 +26,6 @@ public class HealthBar : MonoBehaviour
         isDead = false;
         healthAmount = playerHealth.health;
         healthBar.fillAmount = healthAmount / 100;
-        //Уменьшение шкалы безумия со временем
 
         if(healthAmount == 0)
         {
@@ -40,12 +39,12 @@ public class HealthBar : MonoBehaviour
             deathPanel.SetActive(false);
             isDead = false;
         }
+        
         if (isDead)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        else return;
     }
 
 }

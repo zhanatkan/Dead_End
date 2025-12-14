@@ -38,7 +38,7 @@ public class MusicManager : MonoBehaviour
 
     private void LoadVolume()
     {
-        float savedVolume = PlayerPrefs.GetFloat(VolumePrefKey, 0.5f); // Значение по умолчанию - 0.5
+        float savedVolume = PlayerPrefs.GetFloat(VolumePrefKey, 0.5f); 
         slider.value = savedVolume;
         mixer.audioMixer.SetFloat("SoundVolume", Mathf.Lerp(-80, 0, savedVolume));
     }

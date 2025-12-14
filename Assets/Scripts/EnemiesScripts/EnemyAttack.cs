@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
@@ -14,6 +13,7 @@ public class EnemyAttack : MonoBehaviour
     {
         isAttacking = false;
     }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -49,5 +49,4 @@ public class EnemyAttack : MonoBehaviour
             yield return new WaitForSeconds(attackInterval);
         }
     }
-
 }

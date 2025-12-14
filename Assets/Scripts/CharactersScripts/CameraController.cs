@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 public class CameraController : MonoBehaviour
 {
     public float sensitivity = 2f;
@@ -9,7 +8,6 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        // ќстанавливаем движение камеры, если игра на паузе
         if (PauseGame.isPaused) return;
 
         float mouseX = Input.GetAxis("Mouse X");

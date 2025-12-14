@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorWithAnimationOpenning : MonoBehaviour
@@ -24,12 +22,10 @@ public class DoorWithAnimationOpenning : MonoBehaviour
                     PinCodeDoorWithAnimation newPinDoor = hit.transform.GetComponentInParent<PinCodeDoorWithAnimation>();
                     if (newPinDoor != null && newPinDoor != currentPinDoor)
                     {
-                        // Сбросить код, если начато взаимодействие с новой дверью
                         ResetCode();
                         currentPinDoor = newPinDoor;
                     }
 
-                    // Продолжаем добавлять цифры, если есть текущая дверь
                     if (currentPinDoor != null)
                     {
                         AddDigit(buttonValue);
@@ -37,12 +33,6 @@ public class DoorWithAnimationOpenning : MonoBehaviour
                 }
             }
         }
-
-        // Проверка на открытие текущей двери
-        /*if (doorOpened && currentPinDoor != null && currentPinDoor.doorAnim != null)
-        {
-            currentPinDoor.doorAnim.SetBool("IsOpen", true);
-        }*/
     }
 
     void AddDigit(string digit)
@@ -63,12 +53,12 @@ public class DoorWithAnimationOpenning : MonoBehaviour
     {
         if (currentPinDoor != null && enteredCode == currentPinDoor.correctCode)
         {
-            currentPinDoor.OpenDoor(); // Открываем текущую дверь
-            ResetCode(); // Сбрасываем введенный код
+            currentPinDoor.OpenDoor();
+            ResetCode(); 
         }
         else
         {
-            ResetCode(); // Сбрасываем, если неверно
+            ResetCode(); 
         }
     }
 

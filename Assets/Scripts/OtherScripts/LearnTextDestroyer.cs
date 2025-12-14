@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 public class LearnTextDestroyer : MonoBehaviour
 {
     public GameObject ltext;
@@ -17,7 +15,6 @@ public class LearnTextDestroyer : MonoBehaviour
         {
             ltext.SetActive(true);
             if(i == false) ltext.SetActive(false);
-            if(ltext == null) return;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -26,7 +23,6 @@ public class LearnTextDestroyer : MonoBehaviour
         {
             i = false;
             ltext.SetActive(false);
-            return;
         }
     }
 }

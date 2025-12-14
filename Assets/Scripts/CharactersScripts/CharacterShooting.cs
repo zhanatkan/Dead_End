@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,14 +20,13 @@ public class CharacterShooting : MonoBehaviour
 
     private void Start()
     {
-        currentAmmo = maxAmmo;  // Задаем начальное количество патронов
+        currentAmmo = maxAmmo; 
         bulletText.text = currentAmmo.ToString();
     }
 
     private void Update()
     {
         bulletText.text = currentAmmo.ToString();
-        //Если все условия выполнены и если мы выбрали ячейку с оружием в инвентаре, то мы можем воспроизвести стрельбу
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= nextTimeToFire && currentAmmo > 0)
         {
             if (quickSlotInventory.activeSlot != null)
@@ -41,17 +39,11 @@ public class CharacterShooting : MonoBehaviour
                         {
                             Shoot();
                             nextTimeToFire = Time.time + fireRate;
-                            return;
                         }
-                        else return;
                     }
-                    else return;
                 }
-                else return;
             }
-            else return;
         }
-        else return;
     }
 
     void Shoot()
@@ -61,12 +53,11 @@ public class CharacterShooting : MonoBehaviour
         BulletMovement bulletMovement = bullet.AddComponent<BulletMovement>();
         bulletMovement.SetSpeed(bulletSpeed);
 
-        // Уменьшаем количество патронов
         currentAmmo--;
         StartCoroutine(DestroyBulletAfterTime(bullet, 2f));
     }
 
-    private System.Collections.IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
+    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
     {
         if (bullet == null) yield break;
 

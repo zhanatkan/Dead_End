@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
@@ -27,13 +25,11 @@ public class InventorySlot : MonoBehaviour
     {
         item = null;
         amount = 0;
-        isEmpty = true;  // Обязательно устанавливаем, что слот теперь пустой
+        isEmpty = true;  
 
-        // Очищаем иконку
         iconGO.GetComponent<Image>().sprite = null;
-        iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 0);  // Делаем иконку прозрачной
+        iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 0); 
 
-        // Очищаем текст количества
         itemAmountText.text = "";
     }
 }

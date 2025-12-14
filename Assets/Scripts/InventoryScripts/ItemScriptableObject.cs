@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public enum ItemType {Default,Food,Weapon,Instrument,Torch,Heal,Key,Gun,PistolMagazine,RiffleMagazine}
 public class ItemScriptableObject : ScriptableObject

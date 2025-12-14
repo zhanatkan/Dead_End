@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,7 +38,7 @@ public class SimpleShoot : MonoBehaviour
         inventoryManager = FindObjectOfType<InventoryManager>();
         quickSlotInventory = FindObjectOfType<QuickSlotInventory>();
 
-        currentAmmo = maxAmmo;  // Задаем начальное количество патронов
+        currentAmmo = maxAmmo;  
         bulletText.text = currentAmmo.ToString();
 
         if (barrelLocation == null)
@@ -54,7 +53,6 @@ public class SimpleShoot : MonoBehaviour
         if (PauseGame.isPaused) return;
         bulletText.text = currentAmmo.ToString();
 
-        // Стрельба
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && currentAmmo > 0)
         {
             if (quickSlotInventory.activeSlot != null && quickSlotInventory.activeSlot.item != null && quickSlotInventory.activeSlot.item.itemType == ItemType.Weapon && !inventoryManager.isOpened)
@@ -65,7 +63,6 @@ public class SimpleShoot : MonoBehaviour
             }
         }
 
-        // Перезарядка
         if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();
@@ -76,31 +73,21 @@ public class SimpleShoot : MonoBehaviour
 
     void Reload()
     {
-        // Проверяем наличие магазина в инвентаре
         InventorySlot magazineSlot = inventoryManager.FindItemSlot(ItemType.PistolMagazine);
 
         if (magazineSlot != null && magazineSlot.amount > 0)
         {
-            // Устанавливаем количество патронов после перезарядки
             currentAmmo = maxAmmo;
 
-            // Уменьшаем количество магазинов в инвентаре
             magazineSlot.amount--;
             if (magazineSlot.amount == 0)
             {
-                magazineSlot.ClearSlot(); // Очищаем слот, если магазин израсходован
+                magazineSlot.ClearSlot();
             }
             else
             {
-                // Обновляем текст количества, если магазин еще не исчерпан
                 magazineSlot.itemAmountText.text = magazineSlot.amount.ToString();
             }
-
-            Debug.Log("Оружие перезаряжено!");
-        }
-        else
-        {
-            Debug.Log("Нет магазина для перезарядки!");
         }
 
         bulletText.text = currentAmmo.ToString();

@@ -1,25 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WoodDoorOpen : MonoBehaviour
 {
-  
-    public GameObject door; // Reference to the door GameObject
-    public AudioSource S;   // Reference to the sound for the door
-    private bool isPlayerInTrigger = false; // Flag to check if player is in trigger zone
+    public GameObject door; 
+    public AudioSource S;  
+    private bool isPlayerInTrigger = false;
     public Animator animator;
 
     private void Update()
     {
-        // Check if the player is in the trigger zone and presses the "E" key
         if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            // Toggle the door's open state
             bool isOpen = door.GetComponent<Animator>().GetBool("IsOpen");
             door.GetComponent<Animator>().SetBool("IsOpen", !isOpen);
 
-            // Play sound only when the door state changes
             S.Play();
         }
     }
@@ -28,7 +22,7 @@ public class WoodDoorOpen : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            isPlayerInTrigger = true; // Set flag to true when player enters the trigger zone
+            isPlayerInTrigger = true; 
         }
     }
 
@@ -36,9 +30,8 @@ public class WoodDoorOpen : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            isPlayerInTrigger = false; // Set flag to false when player exits the trigger zone
+            isPlayerInTrigger = false; 
 
-            // Close the door if it's open when the player leaves the area
             if (door.GetComponent<Animator>().GetBool("IsOpen"))
             {
                 door.GetComponent<Animator>().SetBool("IsOpen", false);
@@ -47,5 +40,3 @@ public class WoodDoorOpen : MonoBehaviour
         }
     }
 }
-
-

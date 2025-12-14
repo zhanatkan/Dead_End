@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class GameOverUI : MonoBehaviour
 {
     public RewardedAdsButton ad;
@@ -10,45 +11,38 @@ public class GameOverUI : MonoBehaviour
     {
         ad.LoadAd();
     }
+    
     public void Menu()
     {
-        //Time.timeScale = 1f;
         PlayerPrefs.SetInt("tempAds", PlayerPrefs.GetInt("tempAds") + 1);
-        Debug.Log(PlayerPrefs.GetInt("tempAds"));
         if(PlayerPrefs.GetInt("tempAds") >= 3)
         {
             ad.ShowAd();
             PlayerPrefs.SetInt("tempAds", 0);
         }
-        Debug.Log(PlayerPrefs.GetInt("tempAds"));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    
     public void RestartButton()
     {
-        //Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    
     public void RevivePlayer()
     {
-        // Проверка на завершение просмотра рекламы
-        //ad.ShowAd(); // Показываем рекламу
-
-        Revive(); // Возрождаем игрока
-        DestroyAllEnemies(); // Уничтожаем врагов
+        Revive();
+        DestroyAllEnemies();
     }
 
     private bool PlayerWatchedAd()
     {
-        // Проверяем, завершил ли игрок просмотр рекламы (можно интегрировать это с `OnUnityAdsShowComplete`)
-        return true; // Предположим, что реклама успешно просмотрена
+        return true;
     }
 
     private void Revive()
     {
-        // Логика для возрождения игрока
-        GameObject player = GameObject.FindGameObjectWithTag("Player"); // Найдите вашего игрока по тегу или другому способу
-        player.GetComponent<PlayerHealth>().RestoreHealth(); // Восстанавливаем здоровье или перезапускаем компоненты игрока
-                                                             // Также можете задать начальную позицию игрока здесь
+        GameObject player = GameObject.FindGameObjectWithTag("Player"); 
+        player.GetComponent<PlayerHealth>().RestoreHealth(); 
     }
 
     private void DestroyAllEnemies()
@@ -56,7 +50,7 @@ public class GameOverUI : MonoBehaviour
         EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>();
         foreach (var enemy in enemies)
         {
-            Destroy(enemy.gameObject); // Уничтожаем все объекты с компонентом EnemyHealth
+            Destroy(enemy.gameObject);
         }
     }
 }

@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     public float health = 100f;
-    [HideInInspector]public float damage = 20f;
+    [HideInInspector] public float _damage = 20f;
     private int currentHealth;
 
     public void TakeDamage(float damage)

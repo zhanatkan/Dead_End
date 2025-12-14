@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
@@ -32,7 +31,6 @@ public class PauseGame : MonoBehaviour
         Cursor.visible = false;
         AudioListener.pause = false;
 
-        // Уведомляем другие компоненты о снятии паузы
         SendMessageToComponents("OnResume");
     }
 
@@ -45,12 +43,11 @@ public class PauseGame : MonoBehaviour
         Cursor.visible = true;
         AudioListener.pause = true;
 
-        // Уведомляем другие компоненты о постановке на паузу
         SendMessageToComponents("OnPause");
     }
 
     private void SendMessageToComponents(string message)
-    {
+    {   
         GameObject.FindGameObjectWithTag("Player")?.SendMessage(message, SendMessageOptions.DontRequireReceiver);
 
         foreach (var enemy in GameObject.FindGameObjectsWithTag("Damageable"))

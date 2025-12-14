@@ -9,9 +9,9 @@ public class CharacterMovement : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     public float gravity = -9.81f;
-    private bool isMoving; // флаг дл€ проверки движени€
-    public AudioSource footstepSound; // Wwise событие дл€ звука шагов
-    public float footstepInterval = 0.5f; // базовый интервал между звуками шагов
+    private bool isMoving; 
+    public AudioSource footstepSound; 
+    public float footstepInterval = 0.5f;
 
     private void Start()
     {
@@ -27,46 +27,41 @@ public class CharacterMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
 
-        // ѕровер€ем, движетс€ ли персонаж
         if (horizontalInput != 0 || verticalInput != 0)
         {
-            bool isSprinting = Input.GetKey(KeyCode.LeftShift); // ѕроверка на нажатие Shift
+            bool isSprinting = Input.GetKey(KeyCode.LeftShift); 
 
             if (isSprinting)
             {
                 controller.Move(moveDirection * speed * sprintMultiplier * Time.deltaTime);
 
-                // ≈сли персонаж бежит, делим интервал на 2
                 float sprintInterval = footstepInterval / 2;
 
-                // ѕровер€ем, нужно ли перезапустить звук с новым интервалом
                 if (!isMoving || Mathf.Abs(sprintInterval - footstepInterval / 2) > 0.01f)
                 {
                     isMoving = true;
                     CancelInvoke(nameof(PlayFootstepSound));
-                    InvokeRepeating(nameof(PlayFootstepSound), 0, sprintInterval); // «апускаем звук с ускоренным интервалом
+                    InvokeRepeating(nameof(PlayFootstepSound), 0, sprintInterval);
                 }
             }
             else
             {
                 controller.Move(moveDirection * speed * Time.deltaTime);
 
-                // ѕри обычной ходьбе используем стандартный интервал
                 if (!isMoving || Mathf.Abs(footstepInterval - footstepInterval) > 0.01f)
                 {
                     isMoving = true;
                     CancelInvoke(nameof(PlayFootstepSound));
-                    InvokeRepeating(nameof(PlayFootstepSound), 0, footstepInterval); // «апускаем звук с обычным интервалом
+                    InvokeRepeating(nameof(PlayFootstepSound), 0, footstepInterval); 
                 }
             }
         }
         else
         {
-            // ≈сли персонаж остановилс€, останавливаем повтор звука шагов
             if (isMoving)
             {
                 isMoving = false;
-                CancelInvoke(nameof(PlayFootstepSound)); // останавливаем повтор звука
+                CancelInvoke(nameof(PlayFootstepSound)); 
             }
         }
 
@@ -75,7 +70,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void PlayFootstepSound()
     {
-        footstepSound.Play(); // ¬оспроизводим звук шага (или бега)
+        footstepSound.Play(); 
     }
     public void OnPause()
     {

@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class DamageDealer : MonoBehaviour
 {
     [SerializeField] public float damage;
@@ -10,12 +11,6 @@ public class DamageDealer : MonoBehaviour
             particle.Play();
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
             Invoke("DestroyBullet", 1f);
-            return; 
-        }
-        else
-        {
-           // Destroy(gameObject);
-            return;
         }
     }
     public void DestroyBullet()

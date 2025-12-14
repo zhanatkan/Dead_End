@@ -27,7 +27,6 @@ public class EnemyBehaviour : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
-        // Initialize patrol points
         GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
         patrolPoints = new Transform[points.Length];
         for (int i = 0; i < points.Length; i++)
@@ -48,13 +47,11 @@ public class EnemyBehaviour : MonoBehaviour
             nextRaycastTime = Time.time + raycastInterval;
         }
 
-        // Only patrol if not chasing
         if (!isChasing && !agent.hasPath)
         {
             MoveToNextPatrolPoint();
         }
 
-        // Set animations
         anim.SetBool("Walk", agent.hasPath && !isChasing);
         anim.SetBool("Attack", attack.isAttacking);
     }
@@ -90,7 +87,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (!isChasing && agent.isOnNavMesh)
         {
             isChasing = true;
-            agent.ResetPath(); // Clear any current patrol target
+            agent.ResetPath(); 
             agent.SetDestination(player.position);
         }
     }

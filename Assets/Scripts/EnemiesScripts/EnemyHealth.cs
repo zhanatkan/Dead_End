@@ -3,7 +3,7 @@ using System;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public event Action<GameObject> OnEnemyDestroyed; // Событие при уничтожении врага
+    public event Action<GameObject> OnEnemyDestroyed;
     public float health = 100f;
     private Animator anim;
     public GameObject trigger;
@@ -22,11 +22,11 @@ public class EnemyHealth : MonoBehaviour
             Destroy(trigger);
             col.isTrigger = true;
             OnEnemyDestroyed?.Invoke(gameObject);
-            Invoke("DestoyEnemy", 2f);
+            Invoke("DestroyEnemy", 2f);
         }
     }
 
-    public void DestoyEnemy()
+    public void DestroyEnemy()
     {
         Destroy(gameObject);
     }

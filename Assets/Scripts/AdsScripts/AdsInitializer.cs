@@ -22,7 +22,6 @@ public class AdsInitializer : MonoBehaviour,IUnityAdsInitializationListener
     public void OnInitializationComplete()
     {
         Debug.Log("Unity Ads initialization complete.");
-        // ѕосле успешной инициализации загружаем рекламу
         FindObjectOfType<RewardedAdsButton>().LoadAd();
     }
 
