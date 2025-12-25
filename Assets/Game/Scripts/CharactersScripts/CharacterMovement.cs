@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
     public float sprintMultiplier;
     private CharacterController controller;
     private Vector3 velocity;
