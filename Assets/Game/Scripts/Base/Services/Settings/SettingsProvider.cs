@@ -9,7 +9,7 @@ namespace Game.Scripts.Base.Services.Settings
     {
         private readonly Dictionary<Type, ScriptableObject> _configs;
 
-        public ConfigProvider(IEnumerable<ScriptableObject> configs)
+        public SettingsProvider(IEnumerable<ScriptableObject> configs)
         {
             _configs = configs.ToDictionary(c => c.GetType());
         }
