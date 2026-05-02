@@ -35,7 +35,7 @@ public class DoorWithAnimationOpenning : MonoBehaviour
         }
     }
 
-    void AddDigit(string digit)
+    private void AddDigit(string digit)
     {
         if (enteredCode.Length < currentPinDoor.num)
         {
@@ -49,7 +49,7 @@ public class DoorWithAnimationOpenning : MonoBehaviour
         }
     }
 
-    void CheckCode()
+    private void CheckCode()
     {
         if (currentPinDoor != null && enteredCode == currentPinDoor.correctCode)
         {
@@ -62,7 +62,7 @@ public class DoorWithAnimationOpenning : MonoBehaviour
         }
     }
 
-    void ResetCode()
+    private void ResetCode()
     {
         enteredCode = "";
         if (currentPinDoor != null)

@@ -9,6 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6fa2d92fc1b3f34da284357edf89c3b, type: 3}
-  m_Name: Activation
+  m_Script: {fileID: 11500000, guid: 474625ec463275741956f126ca3a6adf, type: 3}
+  m_Name: CharacterMoveSetting
   m_EditorClassIdentifier: 
+  Speed: 20
+  SprintMultiplier: 1.5
+  Gravity: -9.81
+  FootstepInterval: 0.5
+  FootstepSound: {fileID: 0}

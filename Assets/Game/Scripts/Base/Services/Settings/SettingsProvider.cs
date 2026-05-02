@@ -1,22 +1,38 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Game.Scripts.Base.Services.Settings
 {
     public sealed class SettingsProvider : ISettingsProvider
     {
-        private readonly Dictionary<Type, ScriptableObject> _configs;
+        private readonly Dictionary<Type, ScriptableObject> _configs = new();
 
-        public SettingsProvider(IEnumerable<ScriptableObject> configs)
+        private const string SettingsFolder = "Resources/Settings"; 
+
+        public void LoadSettings(Action action)
         {
-            _configs = configs.ToDictionary(c => c.GetType());
+            _configs.Clear();
+
+            var allConfigs = Resources.LoadAll<ScriptableObject>(SettingsFolder);
+
+            foreach (var config in allConfigs)
+            {
+                var type = config.GetType();
+                _configs.Add(type, config);
+            }
+
+            action.Invoke();
         }
 
         public T Get<T>() where T : ScriptableObject
         {
-            return (T)_configs[typeof(T)];
+            if (_configs.TryGetValue(typeof(T), out var config))
+            {
+                return (T)config;
+            }
+
+            throw new Exception($"Config of type {typeof(T)} not loaded.");
         }
     }
 }

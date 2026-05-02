@@ -1,143 +1,156 @@
-﻿using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
-
-public class InventoryManager : MonoBehaviour
+namespace Game.Scripts.InventoryScripts
 {
-    public GameObject UIBG; 
-    public GameObject crosshair;
-    public Transform inventoryPanel;
-    public Transform quickslotPanel;
-    public List<InventorySlot> slots = new List<InventorySlot>();
-    public bool isOpened;
-    public float reachDistance = 20f;
-    private Camera mainCamera;
-
-    private Outline lastOutlineObject;
-    
-    private void Awake()
+    public class InventoryManager : MonoBehaviour
     {
-        UIBG.SetActive(true);
-    }
-    
-    void Start()
-    {
-        mainCamera = Camera.main;
-        for (int i = 0; i < inventoryPanel.childCount; i++)
+        public GameObject UIBG;
+        public GameObject crosshair;
+        public Transform inventoryPanel;
+        public Transform quickslotPanel;
+        public List<InventorySlot> slots = new List<InventorySlot>();
+        public bool isOpened;
+        public float reachDistance = 20f;
+        private Camera mainCamera;
+
+        private Outline lastOutlineObject;
+
+        public InventoryManager()
         {
-            if (inventoryPanel.GetChild(i).GetComponent<InventorySlot>() != null)
-            {
-                slots.Add(inventoryPanel.GetChild(i).GetComponent<InventorySlot>());
-            }
-        }
-        for (int i = 0; i < quickslotPanel.childCount; i++)
-        {
-            if (quickslotPanel.GetChild(i).GetComponent<InventorySlot>() != null)
-            {
-                slots.Add(quickslotPanel.GetChild(i).GetComponent<InventorySlot>());
-            }
+            
         }
 
-        UIBG.SetActive(false);
-        inventoryPanel.gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
+        private void Awake()
         {
-            isOpened = !isOpened;
-            if (isOpened)
-            {
-                UIBG.SetActive(true);
-                inventoryPanel.gameObject.SetActive(true); 
-                crosshair.SetActive(false);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-
-            }
-            else
-            {
-                UIBG.SetActive(false);
-                inventoryPanel.gameObject.SetActive(false); 
-                crosshair.SetActive(true);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+            UIBG.SetActive(true);
         }
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, reachDistance))
+
+        void Start()
         {
-            if (hit.transform.gameObject.CompareTag("Item"))
+            mainCamera = Camera.main;
+            for (int i = 0; i < inventoryPanel.childCount; i++)
             {
-                if (lastOutlineObject != null)
-                    lastOutlineObject.enabled = false;
-                lastOutlineObject = hit.transform.gameObject.GetComponent<Outline>();
-                lastOutlineObject.enabled = true;
+                if (inventoryPanel.GetChild(i).GetComponent<InventorySlot>() != null)
+                {
+                    slots.Add(inventoryPanel.GetChild(i).GetComponent<InventorySlot>());
+                }
             }
-            else if (lastOutlineObject != null)
+
+            for (int i = 0; i < quickslotPanel.childCount; i++)
             {
-                lastOutlineObject.enabled = false;
-                lastOutlineObject = null;
+                if (quickslotPanel.GetChild(i).GetComponent<InventorySlot>() != null)
+                {
+                    slots.Add(quickslotPanel.GetChild(i).GetComponent<InventorySlot>());
+                }
             }
+
+            UIBG.SetActive(false);
+            inventoryPanel.gameObject.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+
+        void Update()
         {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                isOpened = !isOpened;
+                if (isOpened)
+                {
+                    UIBG.SetActive(true);
+                    inventoryPanel.gameObject.SetActive(true);
+                    crosshair.SetActive(false);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+
+                }
+                else
+                {
+                    UIBG.SetActive(false);
+                    inventoryPanel.gameObject.SetActive(false);
+                    crosshair.SetActive(true);
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+            }
+
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
             if (Physics.Raycast(ray, out hit, reachDistance))
             {
-                if (hit.collider.gameObject.GetComponent<Item>() != null)
+                if (hit.transform.gameObject.CompareTag("Item"))
                 {
-                    AddItem(hit.collider.gameObject.GetComponent<Item>().item, hit.collider.gameObject.GetComponent<Item>().amount);
-                    Destroy(hit.collider.gameObject);
+                    if (lastOutlineObject != null)
+                        lastOutlineObject.enabled = false;
+                    lastOutlineObject = hit.transform.gameObject.GetComponent<Outline>();
+                    lastOutlineObject.enabled = true;
+                }
+                else if (lastOutlineObject != null)
+                {
+                    lastOutlineObject.enabled = false;
+                    lastOutlineObject = null;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                if (Physics.Raycast(ray, out hit, reachDistance))
+                {
+                    if (hit.collider.gameObject.GetComponent<Item>() != null)
+                    {
+                        AddItem(hit.collider.gameObject.GetComponent<Item>().item,
+                            hit.collider.gameObject.GetComponent<Item>().amount);
+                        Destroy(hit.collider.gameObject);
+                    }
                 }
             }
         }
-    }
-    
-    public InventorySlot FindItemSlot(ItemType itemType)
-    {
-        foreach (var slot in slots)
+
+        public InventorySlot FindItemSlot(ItemType itemType)
         {
-            if (slot.item != null && slot.item.itemType == itemType && !slot.isEmpty)
+            foreach (var slot in slots)
             {
-                return slot;
-            }
-        }
-        return null;
-    }
-    
-    private void AddItem(ItemScriptableObject _item, int _amount)
-    {
-        foreach (InventorySlot slot in slots)
-        {
-            if (slot.item == _item)
-            {
-                if (slot.amount + _amount <= _item.maximumAmount)
+                if (slot.item != null && slot.item.itemType == itemType && !slot.isEmpty)
                 {
-                    slot.amount += _amount;
-                    slot.itemAmountText.text = slot.amount.ToString();
-                    return;
+                    return slot;
                 }
-                break;
             }
+
+            return null;
         }
-        
-        foreach (InventorySlot slot in slots)
+
+        private void AddItem(ItemScriptableObject _item, int _amount)
         {
-            if (slot.isEmpty)
+            foreach (InventorySlot slot in slots)
             {
-                slot.item = _item;
-                slot.amount = _amount;
-                slot.isEmpty = false;
-                slot.SetIcon(_item.icon);
-                if (slot.item.maximumAmount != 1)
+                if (slot.item == _item)
                 {
-                    slot.itemAmountText.text = _amount.ToString();
+                    if (slot.amount + _amount <= _item.maximumAmount)
+                    {
+                        slot.amount += _amount;
+                        slot.itemAmountText.text = slot.amount.ToString();
+                        return;
+                    }
+
+                    break;
                 }
-                break;
+            }
+
+            foreach (InventorySlot slot in slots)
+            {
+                if (slot.isEmpty)
+                {
+                    slot.item = _item;
+                    slot.amount = _amount;
+                    slot.isEmpty = false;
+                    slot.SetIcon(_item.icon);
+                    if (slot.item.maximumAmount != 1)
+                    {
+                        slot.itemAmountText.text = _amount.ToString();
+                    }
+
+                    break;
+                }
             }
         }
     }

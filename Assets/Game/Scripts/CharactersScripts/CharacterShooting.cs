@@ -1,3 +1,4 @@
+using Game.Scripts.InventoryScripts;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,7 +47,7 @@ public class CharacterShooting : MonoBehaviour
         }
     }
 
-    void Shoot()
+    private void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
@@ -59,7 +60,10 @@ public class CharacterShooting : MonoBehaviour
 
     private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
     {
-        if (bullet == null) yield break;
+        if (bullet == null)
+        {
+            yield break;
+        }
 
         yield return new WaitForSeconds(delay);
 

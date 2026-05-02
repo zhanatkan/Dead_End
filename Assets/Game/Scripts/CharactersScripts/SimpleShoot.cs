@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Game.Scripts.InventoryScripts;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 

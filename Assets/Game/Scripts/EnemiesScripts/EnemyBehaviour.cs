@@ -66,9 +66,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (angleToPlayer < fieldOfView / 2)
         {
             Ray ray = new Ray(transform.position, directionToPlayer);
-            RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, detectionRange, raycastLayerMask))
+            if (Physics.Raycast(ray, out var hit, detectionRange, raycastLayerMask))
             {
                 if (hit.transform == player)
                 {
