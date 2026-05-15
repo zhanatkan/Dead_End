@@ -1,11 +1,15 @@
 using System;
+using Game.Scripts.Settings;
+using Game.Scripts.Settings.CharacterSettings;
 using UnityEngine;
 
 namespace Game.Scripts.Base.Services.Settings
 {
     public interface ISettingsProvider
     {
-        T Get<T>() where T : ScriptableObject;
-        void LoadSettings(Action action);
+        AudioSetting AudioSetting { get; }
+        CharacterMoveSetting CharacterMoveSetting { get; }
+        
+        void LoadSettings(Action onComplete);
     }
 }

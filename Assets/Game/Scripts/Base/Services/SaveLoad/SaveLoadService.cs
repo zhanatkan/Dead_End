@@ -1,5 +1,6 @@
 using System;
 using Game.Scripts.Base.Services.SaveDataHandler;
+using Game.Scripts.Data;
 using UnityEngine;
 
 namespace Game.Scripts.Base.Services.SaveLoad

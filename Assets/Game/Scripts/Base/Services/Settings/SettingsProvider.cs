@@ -1,38 +1,28 @@
 using System;
-using System.Collections.Generic;
+using Game.Scripts.Settings;
+using Game.Scripts.Settings.CharacterSettings;
 using UnityEngine;
+using VContainer;
 
 namespace Game.Scripts.Base.Services.Settings
 {
     public sealed class SettingsProvider : ISettingsProvider
     {
-        private readonly Dictionary<Type, ScriptableObject> _configs = new();
+        public AudioSetting AudioSetting { get; private set; }
+        public CharacterMoveSetting CharacterMoveSetting { get; private set; }
 
-        private const string SettingsFolder = "Resources/Settings"; 
-
-        public void LoadSettings(Action action)
+        [Inject]
+        public SettingsProvider()
         {
-            _configs.Clear();
-
-            var allConfigs = Resources.LoadAll<ScriptableObject>(SettingsFolder);
-
-            foreach (var config in allConfigs)
-            {
-                var type = config.GetType();
-                _configs.Add(type, config);
-            }
-
-            action.Invoke();
+            
         }
-
-        public T Get<T>() where T : ScriptableObject
+        
+        public void LoadSettings(Action onComplete)
         {
-            if (_configs.TryGetValue(typeof(T), out var config))
-            {
-                return (T)config;
-            }
-
-            throw new Exception($"Config of type {typeof(T)} not loaded.");
+            AudioSetting = Resources.Load<AudioSetting>(SettingsPath.AudioSetting);
+            CharacterMoveSetting = Resources.Load<CharacterMoveSetting>(SettingsPath.CharacterMoveSetting);
+            
+            onComplete?.Invoke();
         }
     }
 }

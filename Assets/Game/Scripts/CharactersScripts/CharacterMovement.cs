@@ -16,7 +16,7 @@ namespace Game.Scripts.CharactersScripts
         [Inject]
         public void Construct(ISettingsProvider settingsProvider)
         {
-            _characterMoveSetting = settingsProvider.Get<CharacterMoveSetting>();
+            _characterMoveSetting = settingsProvider.CharacterMoveSetting;
         }
 
         private void Start()

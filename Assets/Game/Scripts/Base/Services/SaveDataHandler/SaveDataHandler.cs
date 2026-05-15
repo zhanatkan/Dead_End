@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Game.Scripts.Data;
 using VContainer;
 
 namespace Game.Scripts.Base.Services.SaveDataHandler

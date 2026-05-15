@@ -1,5 +1,5 @@
 using System;
-using Game.Scripts.Base.Services.SaveDataHandler;
+using Game.Scripts.Data;
 
 namespace Game.Scripts.Base.Services.SaveLoad
 {

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Bundles-MainMenu
+  m_EditorClassIdentifier: 
+  m_GroupName: Bundles-MainMenu
+  m_GUID: 0f0841a9fbf1ffc41b195343667488be
+  m_SerializeEntries:
+  - m_GUID: 56033a2fbcee9374cb3e2d9476565738
+    m_Address: SettingsWindow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundles/MainMenu/Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 933f710066b1cd54a93b927c44ecebd0, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c585b46889c0fd24b8d0c3ef2bf9590d, type: 2}
+    - {fileID: 11400000, guid: ffca96d785ce96a4e96c287988814f58, type: 2}

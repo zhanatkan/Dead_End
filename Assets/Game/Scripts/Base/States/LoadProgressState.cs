@@ -1,6 +1,7 @@
 using Game.Scripts.Base.Services.Settings;
 using Game.Scripts.Base.Services.SaveDataHandler;
 using Game.Scripts.Base.Services.SaveLoad;
+using Game.Scripts.Data;
 using UnityEngine;
 using VContainer;
 
@@ -44,7 +45,7 @@ namespace Game.Scripts.Base.States
             {
                 _saveDataHandler.SaveData = saveData;
             }
-            //_stateMachine.Enter<InitServicesState>();
+            _stateMachine.Enter<InitState>();
         }
 
 
