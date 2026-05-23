@@ -5,7 +5,7 @@ using Game.Scripts.Base.Services.Input;
 using Game.Scripts.Base.Services.Pause;
 using Game.Scripts.Base.Services.SaveDataHandler;
 using Game.Scripts.Base.Services.UIFactory;
-using Game.Scripts.Game.GameManager;
+using Game.Scripts.Game.Managers.GameManager;
 using Game.Scripts.Game.GameplayControllers;
 using Game.Scripts.UIScripts.Game;
 using UnityEngine;
@@ -43,6 +43,7 @@ namespace Game.Scripts.Base.States
             _inputService = inputService;
             _settingsProvider = settingsProvider;
             _uiFactory = uiFactory;
+            _pauseService = pauseService;
         }
         
         public async void Enter(SceneName sceneName)
@@ -68,6 +69,8 @@ namespace Game.Scripts.Base.States
                 _uiCanvas = _uiFactory.CreateUICanvasRoot();
                 var gameUI = _uiFactory.CreateGameUI(_uiCanvas);
                 builder.RegisterComponent(gameUI);
+                
+                builder.RegisterComponent(_loadingScreen);
                 
                 builder.RegisterBuildCallback(container =>
                 {

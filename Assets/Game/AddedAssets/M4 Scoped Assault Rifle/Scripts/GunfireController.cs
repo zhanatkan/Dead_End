@@ -56,7 +56,6 @@ namespace BigRookGames.Weapons
 
         private void Update()
         {
-            if (PauseGame.isPaused) return;
             bulletText.text = currentAmmo.ToString();
             if (Input.GetKeyDown(KeyCode.R) && currentAmmo == 0)
             {

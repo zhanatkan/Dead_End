@@ -14,7 +14,7 @@ namespace Game.Scripts.Base
         public void Show(bool isGame)
         {
             gameObject.SetActive(true);
-            MenuLoadingScreen.SetActive(isGame);
+            MenuLoadingScreen.SetActive(!isGame);
         }
 
         public void Hide()

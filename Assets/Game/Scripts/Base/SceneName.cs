@@ -6,6 +6,7 @@ namespace Game.Scripts.Base
     {
         LoadingScene,
         MainMenu,
+        MiddleGame,
         MainGame
     }
 }

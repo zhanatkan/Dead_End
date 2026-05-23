@@ -6,18 +6,15 @@ public class SceneTeleport : MonoBehaviour
 {
     public int levelIndex;
     private PlayerHealth player;
-    private PauseGame ui;
     private void Start()
     {
         player = FindObjectOfType<PlayerHealth>();
-        ui = FindObjectOfType<PauseGame>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             DontDestroyOnLoad(player.gameObject);
-            DontDestroyOnLoad(ui.gameObject);
             StartCoroutine(LoadSceneAsync());
         }
     }

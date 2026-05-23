@@ -7,7 +7,8 @@ namespace Game.Scripts.Base.Services.AssetManagement
         public const string WindowCanvas = "WindowCanvas";
         public const string WindowBackground = "WindowBackground";
         public const string UICanvas = "UICanvas";
-        public const string MainGameField = "Game/MainGameField";
+        public const string GameField = "Game/GameField";
+        public const string MiddleGameField = "Game/MiddleGameField";
         public const string Camera = "Game/Camera";
         public const string CursorManager = "Game/CursorManager";
         public const string Player = "Game/Player";
@@ -25,5 +26,7 @@ namespace Game.Scripts.Base.Services.AssetManagement
         
         public const string Windows = "Windows";
         public const string SpriteSetups = "SpriteSetups";
+
+        public const string MapsFormat = "Maps_{0}";
     }
 }

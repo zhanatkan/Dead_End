@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using Game.Scripts.Base.Services.Pause;
 using Game.Scripts.Base.Services.SaveDataHandler;
 using Game.Scripts.Base.Services.UIFactory;
+using Game.Scripts.Game.Camera;
 using Game.Scripts.Game.GameplayControllers;
-using Game.Scripts.Game.MenuManager;
+using Game.Scripts.Game.Managers.MenuManager;
 using VContainer;
 using VContainer.Unity;
 
@@ -57,6 +58,7 @@ namespace Game.Scripts.Base.States
                 var mainMenuUI = _uiFactory.CreateMainMenuUI(uiCanvas);
                 builder.RegisterComponent(mainMenuUI);
                 
+                builder.Register<CursorManager>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
                 builder.Register<SettingsController>(Lifetime.Singleton);
                 builder.RegisterBuildCallback(container =>
                 {

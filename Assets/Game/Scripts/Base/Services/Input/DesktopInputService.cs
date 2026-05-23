@@ -1,8 +1,9 @@
+using Game.Scripts.Game.Character.Input;
 using UnityEngine;
 
 namespace Game.Scripts.Base.Services.Input
 {
-    public sealed class DesktopInputService : IInputService
+    public sealed class DesktopInputService : IInputService, ICharacterInput
     {
         private KeyCode _jumpButton;
 
@@ -49,6 +50,11 @@ namespace Game.Scripts.Base.Services.Input
             var y = UnityEngine.Input.GetAxis("Mouse Y");
 
             return new Vector2(x, y);
+        }
+
+        public bool GetActionButton()
+        {
+            return UnityEngine.Input.GetMouseButton(0);
         }
     }
 }

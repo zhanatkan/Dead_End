@@ -39,7 +39,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (PauseGame.isPaused) return;
 
         if (Time.time >= nextRaycastTime)
         {

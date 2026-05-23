@@ -1,14 +1,14 @@
 using System;
 using Game.Scripts.Settings;
-using Game.Scripts.Settings.CharacterSettings;
 using UnityEngine;
+using PlayerSettings = Game.Scripts.Settings.CharacterSettings.PlayerSettings;
 
 namespace Game.Scripts.Base.Services.Settings
 {
     public interface ISettingsProvider
     {
         AudioSetting AudioSetting { get; }
-        CharacterMoveSetting CharacterMoveSetting { get; }
+        PlayerSettings PlayerSettings { get; }
         
         void LoadSettings(Action onComplete);
     }

@@ -73,9 +73,14 @@ namespace Game.Scripts.Base.States
                     new MenuState(_projectScope, _sceneLoader,
                         _loadingScreen, _uiFactory, _saveDataHandler,
                         _pauseService),
-                [typeof(GameState)] = new GameState(_projectScope, _sceneLoader,
-                    _loadingScreen, _saveDataHandler, _gameFactory, _pauseService,
-                    _inputService, _settingsProvider, _uiFactory),
+                [typeof(MiddleState)] = 
+                    new MiddleState(_projectScope, _sceneLoader,
+                        _loadingScreen, _saveDataHandler, _gameFactory, _pauseService,
+                        _inputService, _settingsProvider, _uiFactory),
+                [typeof(GameState)] = 
+                    new GameState(_projectScope, _sceneLoader,
+                        _loadingScreen, _saveDataHandler, _gameFactory, _pauseService,
+                        _inputService, _settingsProvider, _uiFactory),
             };
         }
     }
