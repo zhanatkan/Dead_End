@@ -1,18 +1,17 @@
-using Game.Scripts.InventoryScripts;
 using UnityEngine;
 
 namespace Game.Scripts.OtherScripts.Doors
 {
     public class OpenDoorController : MonoBehaviour
     {
-        private InventoryManager inventoryManager;
-        private QuickSlotInventory quickSlotInventory;
+        //private InventoryManager inventoryManager;
+        //private QuickSlotInventory quickSlotInventory;
         private DoorManager manager;
 
         private void Start()
         {
-            inventoryManager = FindObjectOfType<InventoryManager>();
-            quickSlotInventory = FindObjectOfType<QuickSlotInventory>();
+            //inventoryManager = FindObjectOfType<InventoryManager>();
+            //quickSlotInventory = FindObjectOfType<QuickSlotInventory>();
             manager = FindObjectOfType<DoorManager>();
         }
 
@@ -22,7 +21,7 @@ namespace Game.Scripts.OtherScripts.Doors
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    if (quickSlotInventory.activeSlot != null)
+                    /*if (quickSlotInventory.activeSlot != null)
                     {
                         if (quickSlotInventory.activeSlot.item != null)
                         {
@@ -34,7 +33,7 @@ namespace Game.Scripts.OtherScripts.Doors
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
             }
         }

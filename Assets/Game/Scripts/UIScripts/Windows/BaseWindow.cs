@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace Game.Scripts.UIScripts.Windows
 {
-    [RequireComponent(typeof(CanvasGroup))]
-    public abstract class BaseWindow : MonoBehaviour
-    {
-        public event Action OnHideAction;
+	[RequireComponent(typeof(CanvasGroup))]
+	public abstract class BaseWindow : MonoBehaviour
+	{
+		public event Action<BaseWindow> OnShowAction;
+		public event Action OnHideAction;
 
 		[SerializeField] private ShowAnimationType ShowAnimation;
 		[SerializeField] private HideAnimationType HideAnimation;
@@ -24,6 +25,7 @@ namespace Game.Scripts.UIScripts.Windows
 
 		public virtual void Show()
 		{
+			OnShowAction?.Invoke(this);
 			gameObject.SetActive(true);
 			PlayShowAnimation();
 		}
@@ -202,5 +204,5 @@ namespace Game.Scripts.UIScripts.Windows
 		}
 
 		#endregion
-    }
+	}
 }

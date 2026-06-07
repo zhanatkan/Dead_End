@@ -19,3 +19,5 @@ MonoBehaviour:
   CameraSettings:
     CameraXSpeed: 175
     CameraYSpeed: 132
+  InventorySettings:
+    MaxSlotsCount: 16

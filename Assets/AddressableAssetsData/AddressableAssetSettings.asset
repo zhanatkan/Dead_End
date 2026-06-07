@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: dd4732ccb2a2912458bdb6886eb75b0d
   m_currentHash:
     serializedVersion: 2
-    Hash: 8faa45baca1217e13dc821786ef2e7e3
+    Hash: bc74887c5169664fba58f1dc2fcbfba2
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -61,7 +61,9 @@ MonoBehaviour:
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: e437f3dba0844ce42ae1438472c11469, type: 2}
+  - {fileID: 11400000, guid: 9f818567db8c8d9448a7e9a06546a9d5, type: 2}
   - {fileID: 11400000, guid: f2bd239554e469c4580d40674805efd5, type: 2}
+  - {fileID: 11400000, guid: bdf24fadf0d95564cb43f0f283c5d36b, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
@@ -102,6 +104,11 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Bundles/MainMenu/Windows
+    - Bundles/MainMenu/SpriteSetups
+    - Bundles/MainGame/Windows
+    - Bundles/MainGame/SpriteSetups
+    - Bundles/Common/Windows
+    - Bundles/Common/SpriteSetups
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 311948cab5f4a5c4a87167280a8e24fa, type: 2}

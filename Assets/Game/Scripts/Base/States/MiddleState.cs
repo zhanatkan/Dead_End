@@ -8,7 +8,9 @@ using Game.Scripts.Base.Services.UIFactory;
 using Game.Scripts.Game.Camera;
 using Game.Scripts.Game.Character.Player;
 using Game.Scripts.Game.Common.Spawn;
+using Game.Scripts.Game.GameplayControllers.Inventory;
 using Game.Scripts.Game.Managers.MiddleManager;
+using Game.Scripts.UIScripts.Game;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -86,8 +88,11 @@ namespace Game.Scripts.Base.States
                 CreateWorldCanvas(builder);
 
                 builder.Register<CursorManager>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
+                builder.Register<InventoryController>(Lifetime.Singleton);
+                builder.Register<QuickInventoryController>(Lifetime.Singleton).AsSelf();
                 builder.Register<MiddleGameSpawnController>(Lifetime.Singleton);
                 
+                builder.Register<GameUIManager>(Lifetime.Singleton);
                 builder.RegisterComponent(_loadingScreen);
                 
                 builder.RegisterBuildCallback(container =>

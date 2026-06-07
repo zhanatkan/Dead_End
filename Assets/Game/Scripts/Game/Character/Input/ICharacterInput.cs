@@ -7,5 +7,6 @@ namespace Game.Scripts.Game.Character.Input
         bool GetJumpButton();
         Vector2 MovementDirection { get; set; }
         bool GetActionButton();
+        bool GetInventoryInput();
     }
 }

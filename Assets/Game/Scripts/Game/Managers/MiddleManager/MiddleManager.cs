@@ -6,11 +6,14 @@ using Game.Scripts.Base.Services.Input;
 using Game.Scripts.Base.Services.SaveDataHandler;
 using Game.Scripts.Base.Services.SaveLoad;
 using Game.Scripts.Base.Services.WindowManager;
+using Game.Scripts.Base.Services.AssetManagement;
 using Game.Scripts.Base.States;
 using Game.Scripts.Game.Camera;
 using Game.Scripts.Game.Character.Input;
 using Game.Scripts.Game.Character.Player;
 using Game.Scripts.Game.Common.Spawn;
+using Game.Scripts.Game.GameplayControllers.Inventory;
+using Game.Scripts.UIScripts.Game;
 using VContainer;
 using VContainer.Unity;
 
@@ -31,13 +34,15 @@ namespace Game.Scripts.Game.Managers.MiddleManager
         private readonly ISaveLoadService _saveLoadService;
         private readonly IBundleProvider _bundleProvider;
         private readonly FirstPersonCamera _camera;
+        private readonly GameUIManager _gameUIManager;
+        private readonly InventoryController _inventoryController;
         
         [Inject]
         public MiddleManager(StateMachine stateMachine, ISaveDataHandler saveDataHandler, MiddleGameField middleGameField,
             PlayerController player, IAudioService audioService, IInputService inputService,
             LoadingScreen loadingScreen, IWindowManager windowManager, MiddleGameSpawnController middleGameSpawnController,
             ISaveLoadService saveLoadService, IBundleProvider bundleProvider, CursorManager cursorManager,
-            FirstPersonCamera camera)
+            FirstPersonCamera camera, GameUIManager gameUIManager, InventoryController inventoryController)
         {
             _stateMachine = stateMachine;
             _saveDataHandler = saveDataHandler;
@@ -52,6 +57,8 @@ namespace Game.Scripts.Game.Managers.MiddleManager
             _bundleProvider = bundleProvider;
             _cursorManager = cursorManager;
             _camera = camera;
+            _gameUIManager = gameUIManager;
+            _inventoryController = inventoryController;
         }
 
         public async void Initialize()
@@ -60,9 +67,15 @@ namespace Game.Scripts.Game.Managers.MiddleManager
             _player.Init();
             _player.InitInput((ICharacterInput)_inputService);
             _camera.Init(_player);
+            _player.InitPickupController(_camera);
+            
+            await _bundleProvider.LoadBundle(AssetsPath.BundlesMainGamePath);
+            _inventoryController.Init();
             
             _cursorManager.Init(true);
+            _gameUIManager.Init();
             _middleGameField.Init();
+            
             InformSaveReaders();
             StartGameplay();
         }
@@ -81,6 +94,7 @@ namespace Game.Scripts.Game.Managers.MiddleManager
             _player.DeInit();
             _cursorManager.DeInit();
             _middleGameField.DeInit();   
+            _gameUIManager.DeInit();
         }
 
         private void GoToPrevState()

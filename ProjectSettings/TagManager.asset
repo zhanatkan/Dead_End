@@ -18,10 +18,10 @@ TagManager:
   - 
   - Water
   - UI
-  - Floor
+  - Item
   - DoorTrigger
-  - Weapon
-  - Key
+  - 
+  - 
   - Ground
   - Character
   - Camera

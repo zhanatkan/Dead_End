@@ -56,5 +56,10 @@ namespace Game.Scripts.Base.Services.Input
         {
             return UnityEngine.Input.GetMouseButton(0);
         }
+
+        public bool GetInventoryInput()
+        {
+            return UnityEngine.Input.GetKeyDown(KeyCode.I);
+        }
     }
 }

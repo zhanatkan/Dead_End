@@ -3,7 +3,9 @@ using Game.Scripts.Game.Character.Player;
 using Game.Scripts.Game.Managers.GameManager;
 using Game.Scripts.Game.Managers.MiddleManager;
 using Game.Scripts.Game.Camera;
+using Game.Scripts.Game.GameplayControllers.Inventory;
 using Game.Scripts.Game.Maps;
+using Game.Scripts.Settings.Inventory;
 using UnityEngine;
 
 namespace Game.Scripts.Base.Services.GameFactory
@@ -16,5 +18,7 @@ namespace Game.Scripts.Base.Services.GameFactory
         FirstPersonCamera CreateCamera(Transform parent);
         Transform CreateWorldCanvas();
         UniTask<Map> CreateMap(string mapName);
+        
+        ItemPickup CreateItemPickup(ItemType itemType);
     }
 }

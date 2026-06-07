@@ -6,7 +6,7 @@ namespace Game.Scripts.Base.Services.WindowManager
     {
         void Init();
         T GetTopWindow<T>() where T : BaseWindow;
-        T CreateWindow<T>(bool withBackground = true) where T : BaseWindow;
+        T CreateWindow<T>() where T : BaseWindow;
         void HideAllWindows();
     }
 }

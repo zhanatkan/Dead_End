@@ -19,5 +19,10 @@ namespace Game.Scripts.Game.Character.Input
         {
             return false;
         }
+
+        public bool GetInventoryInput()
+        {
+            return false;
+        }
     }
 }

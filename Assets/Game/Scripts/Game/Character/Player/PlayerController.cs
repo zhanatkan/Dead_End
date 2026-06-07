@@ -1,9 +1,13 @@
+using System;
 using Game.Scripts.Base.Services.Audio;
 using Game.Scripts.Base.Services.Settings;
 using UnityEngine;
 using Game.Scripts.Base.Services.Pause;
+using Game.Scripts.Game.Camera;
 using Game.Scripts.Game.Character.Jump;
 using Game.Scripts.Game.Character.Movement;
+using Game.Scripts.Game.Character.Pickup;
+using Game.Scripts.Game.GameplayControllers.Inventory;
 using VContainer;
 using CharacterController = Game.Scripts.Game.Character.Base.CharacterController;
 
@@ -11,19 +15,24 @@ namespace Game.Scripts.Game.Character.Player
 {
     public class PlayerController : CharacterController, IPauseHandler
     {
+        public event Action OnInventoryWindowOpen;
+        
         public Transform CameraPoint;
-
+        public PickupController PickupController;
+        
         private bool _isPaused;
         private IAudioService _audioService;
         private IPauseService _pauseService;
+        private InventoryController _inventoryController;
 
         [Inject]
         public void Construct(ISettingsProvider settingsProvider, IPauseService pauseService, 
-            IAudioService audioService)
+            IAudioService audioService, InventoryController inventoryController)
         {
             var playerConfig = settingsProvider.PlayerSettings;
             base.Construct(playerConfig.CharacterMoveConfig);
-
+            
+            _inventoryController = inventoryController;
             _pauseService = pauseService;
             _audioService = audioService;
         }
@@ -35,11 +44,30 @@ namespace Game.Scripts.Game.Character.Player
             _pauseService.Register(this);
         }
 
+        public void InitPickupController(FirstPersonCamera firstPersonCamera)
+        {
+            PickupController.Construct(_inventoryController, firstPersonCamera.transform);
+        }
+
         public override void DeInit()
         {
             base.DeInit();
             
             _pauseService.Unregister(this);
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            if (CharacterInput.GetInventoryInput())
+            {
+                OnInventoryActionClicked();
+            }
+
+            if (CharacterInput.GetActionButton())
+            {
+                PickupController.TryPickup();
+            }
         }
 
         protected override void UpdateRunState()
@@ -72,6 +100,11 @@ namespace Game.Scripts.Game.Character.Player
         public void OnPauseChanged(bool isPaused)
         {
             _isPaused = isPaused;
+        }
+
+        private void OnInventoryActionClicked()
+        {
+            OnInventoryWindowOpen?.Invoke();
         }
     }
 }

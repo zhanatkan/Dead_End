@@ -1,3 +1,4 @@
+using Game.Scripts.Settings.Inventory;
 using UnityEngine;
 
 namespace Game.Scripts.Settings.CharacterSettings
@@ -8,5 +9,6 @@ namespace Game.Scripts.Settings.CharacterSettings
         public CharacterMoveSetting CharacterMoveConfig;
         public KeyCode JumpButton = KeyCode.Space;
         public CameraSettings CameraSettings;
+        public InventorySetting InventorySettings;
     }
 }

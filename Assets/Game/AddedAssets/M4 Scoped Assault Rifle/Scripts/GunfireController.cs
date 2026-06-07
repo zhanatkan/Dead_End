@@ -1,5 +1,4 @@
-﻿using Game.Scripts.InventoryScripts;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace BigRookGames.Weapons
@@ -30,8 +29,8 @@ namespace BigRookGames.Weapons
 
         [SerializeField] private float timeLastFired;
 
-        private InventoryManager inventoryManager;
-        private QuickSlotInventory quickSlotInventory;
+        //private InventoryManager inventoryManager;
+       // private QuickSlotInventory quickSlotInventory;
 
         public Transform firePoint;
         public GameObject bulletPrefab;
@@ -44,8 +43,8 @@ namespace BigRookGames.Weapons
 
         private void Start()
         {
-            inventoryManager = FindObjectOfType<InventoryManager>();
-            quickSlotInventory = FindObjectOfType<QuickSlotInventory>();
+           // inventoryManager = FindObjectOfType<InventoryManager>();
+            //quickSlotInventory = FindObjectOfType<QuickSlotInventory>();
 
             currentAmmo = maxAmmo;
             bulletText.text = currentAmmo.ToString();
@@ -63,7 +62,7 @@ namespace BigRookGames.Weapons
             }
             if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
             {
-                if (quickSlotInventory.activeSlot != null)
+                /*if (quickSlotInventory.activeSlot != null)
                 {
                     if (quickSlotInventory.activeSlot.item != null)
                     {
@@ -91,8 +90,7 @@ namespace BigRookGames.Weapons
                         else return;
                     }
                     else return;
-                }
-                else return;
+                }*/
             }
             else return;
         }
@@ -158,9 +156,9 @@ namespace BigRookGames.Weapons
         void Reload()
         {
             // Проверяем наличие магазина в инвентаре
-            InventorySlot magazineSlot = inventoryManager.FindItemSlot(ItemType.RiffleMagazine);
+            //InventorySlot magazineSlot = inventoryManager.FindItemSlot(ItemType.RiffleMagazine);
 
-            if (magazineSlot != null && magazineSlot.amount > 0)
+            /*if (magazineSlot != null && magazineSlot.amount > 0)
             {
                 // Устанавливаем количество патронов после перезарядки
                 currentAmmo = maxAmmo;
@@ -183,7 +181,7 @@ namespace BigRookGames.Weapons
             {
                 Debug.Log("Нет магазина для перезарядки!");
             }
-
+*/
             bulletText.text = currentAmmo.ToString();
         }
 

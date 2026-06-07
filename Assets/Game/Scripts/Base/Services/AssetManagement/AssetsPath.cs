@@ -17,6 +17,7 @@ namespace Game.Scripts.Base.Services.AssetManagement
         public const string NickViewController = "Game/NickViewController";
         public const string HealthView = "Game/HealthView";
         public const string WorldCanvas = "Game/WorldCanvas";
+        public const string Items = "Game/Items/";
         public const string MainMenuUI = "MainMenuUI";
         public const string MobileControls = "MobileControls";
         public const string GameLoopElements = "Game/GameLoopElements";

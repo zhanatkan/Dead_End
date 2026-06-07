@@ -1,4 +1,3 @@
-using Game.Scripts.InventoryScripts;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,8 +13,8 @@ public class CharacterShooting : MonoBehaviour
     [Header("Links")]
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public InventoryManager inventoryManager;
-    public QuickSlotInventory quickSlotInventory;
+    //public InventoryManager inventoryManager;
+    //public QuickSlotInventory quickSlotInventory;
     public Text bulletText;
 
 
@@ -30,7 +29,7 @@ public class CharacterShooting : MonoBehaviour
         bulletText.text = currentAmmo.ToString();
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= nextTimeToFire && currentAmmo > 0)
         {
-            if (quickSlotInventory.activeSlot != null)
+            /*if (quickSlotInventory.activeSlot != null)
             {
                 if (quickSlotInventory.activeSlot.item != null)
                 {
@@ -43,7 +42,7 @@ public class CharacterShooting : MonoBehaviour
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 

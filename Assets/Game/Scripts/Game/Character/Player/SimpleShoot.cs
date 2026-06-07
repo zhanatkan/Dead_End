@@ -1,5 +1,4 @@
-﻿using Game.Scripts.InventoryScripts;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,8 +23,8 @@ public class SimpleShoot : MonoBehaviour
     public AudioSource Source;
     public AudioSource reload;
 
-    private InventoryManager inventoryManager;
-    private QuickSlotInventory quickSlotInventory;
+    //private InventoryManager inventoryManager;
+    //private QuickSlotInventory quickSlotInventory;
 
     public Transform firePoint;
     public Text bulletText;
@@ -36,8 +35,8 @@ public class SimpleShoot : MonoBehaviour
 
     void Start()
     {
-        inventoryManager = FindObjectOfType<InventoryManager>();
-        quickSlotInventory = FindObjectOfType<QuickSlotInventory>();
+        //inventoryManager = FindObjectOfType<InventoryManager>();
+        //quickSlotInventory = FindObjectOfType<QuickSlotInventory>();
 
         currentAmmo = maxAmmo;  
         bulletText.text = currentAmmo.ToString();
@@ -55,12 +54,12 @@ public class SimpleShoot : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && currentAmmo > 0)
         {
-            if (quickSlotInventory.activeSlot != null && quickSlotInventory.activeSlot.item != null && quickSlotInventory.activeSlot.item.itemType == ItemType.Weapon && !inventoryManager.isOpened)
+            /*if (quickSlotInventory.activeSlot != null && quickSlotInventory.activeSlot.item != null && quickSlotInventory.activeSlot.item.itemType == ItemType.Weapon && !inventoryManager.isOpened)
             {
                 gunAnimator.SetTrigger("Fire");
                 
 
-            }
+            }*/
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -73,9 +72,9 @@ public class SimpleShoot : MonoBehaviour
 
     void Reload()
     {
-        InventorySlot magazineSlot = inventoryManager.FindItemSlot(ItemType.PistolMagazine);
+        //InventorySlot magazineSlot = inventoryManager.FindItemSlot(ItemType.PistolMagazine);
 
-        if (magazineSlot != null && magazineSlot.amount > 0)
+        /*if (magazineSlot != null && magazineSlot.amount > 0)
         {
             currentAmmo = maxAmmo;
 
@@ -88,7 +87,7 @@ public class SimpleShoot : MonoBehaviour
             {
                 magazineSlot.itemAmountText.text = magazineSlot.amount.ToString();
             }
-        }
+        }*/
 
         bulletText.text = currentAmmo.ToString();
     }

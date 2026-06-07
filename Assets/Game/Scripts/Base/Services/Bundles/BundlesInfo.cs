@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Game.Scripts.Settings.Sprites;
 using Game.Scripts.Base.Services.AssetManagement;
+using Game.Scripts.Settings.Sprites;
+using Game.Scripts.UIScripts.Windows.Inventory;
+using Game.Scripts.UIScripts.Windows.Settings;
 using UnityEngine;
 
 namespace Game.Scripts.Base.Services.Bundles
@@ -22,7 +24,7 @@ namespace Game.Scripts.Base.Services.Bundles
                 Path = AssetsPath.BundlesCommonPath,
                 WindowTypes = new HashSet<Type>()
                 {
-                    
+                    typeof(SettingsWindow),
                 },
                 SpriteSetupTypes = new HashSet<Type>()
                 {
@@ -46,11 +48,11 @@ namespace Game.Scripts.Base.Services.Bundles
                 Path = AssetsPath.BundlesMainGamePath,
                 WindowTypes = new HashSet<Type>()
                 {
-                    
+                    typeof(InventoryWindow),
                 },
                 SpriteSetupTypes = new HashSet<Type>()
                 {
-                    
+                    typeof(InventorySpriteSetup),
                 }
             },
         };

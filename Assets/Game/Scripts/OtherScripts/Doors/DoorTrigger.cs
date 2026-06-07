@@ -1,4 +1,3 @@
-using Game.Scripts.InventoryScripts;
 using UnityEngine;
 
 namespace Game.Scripts.OtherScripts.Doors
@@ -6,21 +5,21 @@ namespace Game.Scripts.OtherScripts.Doors
     public class DoorTrigger : MonoBehaviour
     {
         public Door linkedDoor;
-        private QuickSlotInventory playerInventory;
+        //private QuickSlotInventory playerInventory;
 
         public void Start()
         {
-            playerInventory = FindObjectOfType<QuickSlotInventory>();
+            //playerInventory = FindObjectOfType<QuickSlotInventory>();
         }
 
         public void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                if (playerInventory != null)
+                /*if (playerInventory != null)
                 {
                     playerInventory.SetNearbyDoors(linkedDoor);
-                }
+                }*/
             }
         }
 
@@ -28,10 +27,10 @@ namespace Game.Scripts.OtherScripts.Doors
         {
             if (other.CompareTag("Player"))
             {
-                if (playerInventory != null)
+                /*if (playerInventory != null)
                 {
                     playerInventory.SetNearbyDoors(null);
-                }
+                }*/
             }
         }
     }

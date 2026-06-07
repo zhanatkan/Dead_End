@@ -4,9 +4,11 @@ using Game.Scripts.Base.Services.Pause;
 using Game.Scripts.Base.Services.SaveDataHandler;
 using Game.Scripts.Game.Camera;
 using Game.Scripts.Game.Character.Player;
+using Game.Scripts.Game.GameplayControllers.Inventory;
 using Game.Scripts.Game.Managers.GameManager;
 using Game.Scripts.Game.Managers.MiddleManager;
 using Game.Scripts.Game.Maps;
+using Game.Scripts.Settings.Inventory;
 using UnityEngine;
 using VContainer;
 
@@ -75,6 +77,9 @@ namespace Game.Scripts.Base.Services.GameFactory
             
             return Object.Instantiate(mapPrefab).GetComponent<Map>();
         }
+        
+        public ItemPickup CreateItemPickup(ItemType itemType) =>
+            InstantiateRegistered(AssetsPath.Items + itemType).GetComponent<ItemPickup>();
         
         private GameObject InstantiateRegistered(string address, Transform parent, Vector3 at)
         {

@@ -7,7 +7,7 @@ namespace Game.Scripts.Base.Services.Audio
     [RequireComponent(typeof(Button))]
     public class ButtonWithClickSound : MonoBehaviour
     {
-        [SerializeField] SoundType SoundType = Audio.SoundType.ClickUI;
+        [SerializeField] SoundType SoundType = SoundType.ClickUI;
         [SerializeField] private Button Button;
         
         private IAudioService _audioService;
