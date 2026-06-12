@@ -9,6 +9,7 @@ namespace Game.Scripts.Data
         public List<ItemSlotSave> MainInventorySlots = new();
         public List<ItemSlotSave> QuickInventorySlots = new();
         public int MaxSlotsCount = 16;
+        public int Records = 0;
     }
 
     [Serializable]

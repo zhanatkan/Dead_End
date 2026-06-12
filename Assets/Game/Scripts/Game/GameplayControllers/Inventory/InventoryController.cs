@@ -51,9 +51,9 @@ namespace Game.Scripts.Game.GameplayControllers.Inventory
             return _slots[index];
         }
 
-        public void OpenInventoryWindow()
+        public void OpenInventoryWindow(Action onQuit)
         {
-            _inventoryWindow.Init(this, _audioService);
+            _inventoryWindow.Init(this, _audioService, onQuit);
             _inventoryWindow.Show();
         }
         

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Game.Scripts.Base.Services.Audio;
 using Game.Scripts.Game.GameplayControllers.Inventory;
@@ -16,11 +17,15 @@ namespace Game.Scripts.UIScripts.Windows.Inventory
         private InventoryController _inventoryController;
         private IAudioService _audioService;
         private readonly List<InventorySlotView> _slotViews = new();
+
+        private Action _onQuit;
         
-        public void Init(InventoryController inventoryController, IAudioService audioService)
+        public void Init(InventoryController inventoryController, IAudioService audioService,
+            Action onQuit)
         {
             _inventoryController = inventoryController;
             _audioService = audioService;
+            _onQuit = onQuit;
             _inventoryController.OnSlotChanged += OnSlotChanged;
         }
         
@@ -80,7 +85,11 @@ namespace Game.Scripts.UIScripts.Windows.Inventory
             }
             SlotsInfoText.text = $"{occupied} / {_inventoryController.SlotCount}";
         }
-        
-        private void OnQuit() => Hide();
+
+        private void OnQuit()
+        {
+            _onQuit?.Invoke();
+            Hide();
+        }
     }
 }

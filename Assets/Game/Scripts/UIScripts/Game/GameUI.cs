@@ -35,5 +35,10 @@ namespace Game.Scripts.UIScripts.Game
         {
             QuickSlotsWidget.DeInit();
         }
+
+        public void SetQuickWidgetOverrideCanvas(bool isActive)
+        {
+            QuickSlotsWidget.SetOverrideCanvas(isActive);
+        }
     }
 }

@@ -40,7 +40,11 @@ namespace Game.Scripts.UIScripts.Game
 
         private void OpenInventoryWindow()
         {
-            _inventoryController.OpenInventoryWindow();
+            _gameUI.SetQuickWidgetOverrideCanvas(true);
+            _inventoryController.OpenInventoryWindow(() =>
+            {
+                _gameUI.SetQuickWidgetOverrideCanvas(false);
+            });
         }
     }
 }

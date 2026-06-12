@@ -8,6 +8,7 @@ namespace Game.Scripts.UIScripts.Windows.Inventory
     {
         [SerializeField] private Transform slotsContainer;
         [SerializeField] private InventorySlotView slotPrefab;
+        [SerializeField] private Canvas OverrideCanvas;
         
         private QuickInventoryController _quickController;
         private List<InventorySlotView> _slotViews = new();
@@ -16,12 +17,24 @@ namespace Game.Scripts.UIScripts.Windows.Inventory
         {
             _quickController = quickController;
             CreateSlots();
+            SetOverrideCanvas(false);
             _quickController.OnSelectedSlotChanged += OnSelectedSlotChanged;
         }
         
         public void DeInit()
         {
             _quickController.OnSelectedSlotChanged -= OnSelectedSlotChanged;
+        }
+
+        public void SetOverrideCanvas(bool isActive)
+        {
+            if ( !OverrideCanvas )
+            {
+                return;
+            }
+
+            OverrideCanvas.overrideSorting = isActive;
+            OverrideCanvas.sortingOrder = isActive ? 30 : 1;
         }
         
         private void CreateSlots()

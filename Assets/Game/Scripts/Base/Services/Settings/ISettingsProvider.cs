@@ -9,6 +9,7 @@ namespace Game.Scripts.Base.Services.Settings
     public interface ISettingsProvider
     {
         AudioSetting AudioSetting { get; }
+        AdvertisementSetting AdvertisementSetting { get; }
         PlayerSettings PlayerSettings { get; }
         ItemsSetting ItemsSetting { get; }
         
