@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Bundles-MainGame
   m_GUID: e613234b09f66fb488e160ef80056bf2
   m_SerializeEntries:
+  - m_GUID: 15728256ac7328f4f9b932f7d900d9b6
+    m_Address: LevelChoiceWindow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundles/MainGame/Windows
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2bdc3423375d5fa4693b82a4bc0f8c04
     m_Address: InventoryWindow
     m_ReadOnly: 0
@@ -23,6 +29,18 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 433cf4dc50cfe2642893b849eff0313c
     m_Address: InventorySpriteSetup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundles/MainGame/SpriteSetups
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3c990b209f227d48a3b21395e95c283
+    m_Address: PauseWindow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundles/MainGame/Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc7167d029778da418b79db4627d1c55
+    m_Address: LevelsSpriteSetup
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundles/MainGame/SpriteSetups

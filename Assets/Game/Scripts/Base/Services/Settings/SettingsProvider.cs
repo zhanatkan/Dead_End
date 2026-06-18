@@ -14,6 +14,7 @@ namespace Game.Scripts.Base.Services.Settings
         public AdvertisementSetting AdvertisementSetting { get; private set; }
         public PlayerSettings PlayerSettings { get; private set; }
         public ItemsSetting ItemsSetting { get; private set; }
+        public LevelSettings LevelSettings { get; private set; }
 
         [Inject]
         public SettingsProvider()
@@ -27,6 +28,7 @@ namespace Game.Scripts.Base.Services.Settings
             AdvertisementSetting = Resources.Load<AdvertisementSetting>(SettingsPath.AdvertisementSetting);
             PlayerSettings = Resources.Load<PlayerSettings>(SettingsPath.PlayerSettings);
             ItemsSetting = Resources.Load<ItemsSetting>(SettingsPath.ItemsSettings);
+            LevelSettings = Resources.Load<LevelSettings>(SettingsPath.LevelSettings);
             
             onComplete?.Invoke();
         }

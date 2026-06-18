@@ -12,6 +12,7 @@ namespace Game.Scripts.Base.Services.Settings
         AdvertisementSetting AdvertisementSetting { get; }
         PlayerSettings PlayerSettings { get; }
         ItemsSetting ItemsSetting { get; }
+        LevelSettings LevelSettings { get; }
         
         void LoadSettings(Action onComplete);
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Scripts.UIScripts.Windows.LevelChoice;
 
 namespace Game.Scripts.Data
 {
@@ -10,6 +11,8 @@ namespace Game.Scripts.Data
         public List<ItemSlotSave> QuickInventorySlots = new();
         public int MaxSlotsCount = 16;
         public int Records = 0;
+
+        public LevelName LevelName;
     }
 
     [Serializable]

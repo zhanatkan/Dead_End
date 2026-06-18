@@ -7,10 +7,12 @@ using Game.Scripts.Base.Services.Settings;
 using Game.Scripts.Base.Services.UIFactory;
 using Game.Scripts.Game.Camera;
 using Game.Scripts.Game.Character.Player;
+using Game.Scripts.Game.Common.LevelChoice;
 using Game.Scripts.Game.Common.Spawn;
+using Game.Scripts.Game.GameplayControllers;
 using Game.Scripts.Game.GameplayControllers.Inventory;
 using Game.Scripts.Game.Managers.MiddleManager;
-using Game.Scripts.UIScripts.Game;
+using Game.Scripts.UIScripts.MiddleGame;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -74,8 +76,8 @@ namespace Game.Scripts.Base.States
             {
                 _uiCanvas = _uiFactory.CreateUICanvasRoot();
                 InitDesktopInputService();
-                var gameUI = _uiFactory.CreateGameUI(_uiCanvas);
-                builder.RegisterComponent(gameUI);
+                var middleGameUI = _uiFactory.CreateMiddleGameUI(_uiCanvas);
+                builder.RegisterComponent(middleGameUI);
 
                 CreateMiddleGameField(builder);
 
@@ -92,7 +94,10 @@ namespace Game.Scripts.Base.States
                 builder.Register<QuickInventoryController>(Lifetime.Singleton).AsSelf();
                 builder.Register<MiddleGameSpawnController>(Lifetime.Singleton);
                 
-                builder.Register<GameUIManager>(Lifetime.Singleton);
+                builder.Register<PauseController>(Lifetime.Singleton);
+                builder.Register<LevelChoiceController>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
+                
+                builder.Register<MiddleGameUIManager>(Lifetime.Singleton);
                 builder.RegisterComponent(_loadingScreen);
                 
                 builder.RegisterBuildCallback(container =>

@@ -5,8 +5,12 @@ using Game.Scripts.Base.Services.Input;
 using Game.Scripts.Base.Services.Pause;
 using Game.Scripts.Base.Services.SaveDataHandler;
 using Game.Scripts.Base.Services.UIFactory;
+using Game.Scripts.Game.Camera;
+using Game.Scripts.Game.Character.Player;
+using Game.Scripts.Game.Common.Spawn;
 using Game.Scripts.Game.Managers.GameManager;
 using Game.Scripts.Game.GameplayControllers;
+using Game.Scripts.Game.GameplayControllers.Inventory;
 using Game.Scripts.UIScripts.Game;
 using UnityEngine;
 using VContainer;
@@ -28,6 +32,9 @@ namespace Game.Scripts.Base.States
         
         private LifetimeScope _mainGameScope;
         private Transform _uiCanvas;
+        
+        private PlayerController _player;
+        private FirstPersonCamera _camera;
         
         [Inject]
         public GameState(LifetimeScope projectScope, SceneLoader sceneLoader, 
@@ -67,8 +74,26 @@ namespace Game.Scripts.Base.States
             _mainGameScope = _projectScope.CreateChild(builder =>
             {
                 _uiCanvas = _uiFactory.CreateUICanvasRoot();
+                InitDesktopInputService();
                 var gameUI = _uiFactory.CreateGameUI(_uiCanvas);
                 builder.RegisterComponent(gameUI);
+
+                CreateGameField(builder);
+
+                _player = _gameFactory.CreatePlayer();
+                builder.RegisterComponent(_player).AsImplementedInterfaces().AsSelf();
+
+                _camera = _gameFactory.CreateCamera(_player.transform);
+                builder.RegisterComponent(_camera);
+                
+                CreateWorldCanvas(builder);
+
+                builder.Register<CursorManager>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
+                builder.Register<InventoryController>(Lifetime.Singleton);
+                builder.Register<QuickInventoryController>(Lifetime.Singleton).AsSelf();
+                builder.Register<PauseController>(Lifetime.Singleton);
+                builder.Register<PlayerSpawnController>(Lifetime.Singleton);
+                builder.Register<GameUIManager>(Lifetime.Singleton);
                 
                 builder.RegisterComponent(_loadingScreen);
                 
@@ -89,6 +114,24 @@ namespace Game.Scripts.Base.States
                 
                 builder.RegisterEntryPoint<GameManager>();
             });
+        }
+
+        private void CreateGameField(IContainerBuilder builder)
+        {
+            var gameField = _gameFactory.CreateGameField();
+            builder.RegisterComponent(gameField).AsImplementedInterfaces().AsSelf();
+        }
+        
+        private void InitDesktopInputService()
+        {
+            var desktopInputService = (DesktopInputService)_inputService;
+            var playerConfig = _settingsProvider.PlayerSettings;
+            desktopInputService.Init(playerConfig.JumpButton);
+        }
+        
+        private void CreateWorldCanvas(IContainerBuilder builder)
+        {
+            var worldCanvas = _gameFactory.CreateWorldCanvas();
         }
     }
 }

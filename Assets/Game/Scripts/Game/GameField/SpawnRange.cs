@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Game.GameField
 {
-    public class SpawnRange : MonoBehaviour, ISpawnPosition
+    public class SpawnRange : MonoBehaviour, ISpawnPosition, IRandomPosition
     {
         [SerializeField] private Transform minPoint, maxPoint;
         
@@ -21,6 +21,11 @@ namespace Game.Scripts.Game.GameField
             var y = Random.Range(minPoint.position.y, maxPoint.position.y);
             var z = Random.Range(minPoint.position.z, maxPoint.position.z);
             return new Vector3(x, y, z);
+        }
+
+        public Vector3 RandomPosition()
+        {
+            return SpawnPosition();
         }
     }
 }

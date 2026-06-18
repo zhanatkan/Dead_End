@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Game.Scripts.Base.Services.AssetManagement;
 using Game.Scripts.Base.Services.Pause;
 using Game.Scripts.UIScripts.Game;
+using Game.Scripts.UIScripts.MiddleGame;
 using Game.Scripts.UIScripts.MainMenu;
 using Game.Scripts.UIScripts.Windows;
 using UnityEngine;
@@ -50,6 +51,9 @@ namespace Game.Scripts.Base.Services.UIFactory
         public Transform CreateUICanvasRoot() =>
             InstantiateRegistered(AssetsPath.UICanvas).transform;
 
+        public MiddleGameUI CreateMiddleGameUI(Transform parent) =>
+            InstantiateRegistered(AssetsPath.MiddleGameUI, parent).GetComponent<MiddleGameUI>();
+        
         public GameUI CreateGameUI(Transform parent) =>
             InstantiateRegistered(AssetsPath.GameUI, parent).GetComponent<GameUI>();
 

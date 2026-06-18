@@ -9,6 +9,7 @@ namespace Game.Scripts.Game.Character.Base
 {
     public abstract class CharacterController : MonoBehaviour
     {
+        [SerializeField] private CharacterView CharacterView;
         [SerializeField] protected GroundCheck GroundCheck;
         [SerializeField] private Rigidbody Rigidbody;
         
@@ -34,6 +35,7 @@ namespace Game.Scripts.Game.Character.Base
             set => _characterModel.JumpController = value;
         }
         
+        public CharacterView GetView => CharacterView;
         public ICharacterPhysics CharacterPhysics { get; private set; }
         
         public CharacterState CharacterState => _characterModel.CharacterState;
@@ -55,6 +57,7 @@ namespace Game.Scripts.Game.Character.Base
                 this
             );
 
+            CharacterView = CharacterView ? CharacterView : GetComponent<CharacterView>();
             _disabledCharacterInput = new DisabledCharacterInput();
         }
 
@@ -90,6 +93,11 @@ namespace Game.Scripts.Game.Character.Base
             
             bool isGrounded = CharacterJumpState == CharacterJumpState.Grounded && !IsStunned;
             bool isWalking = CharacterMovementState != CharacterMovementState.Idle;
+            
+            //CharacterView.SetGroundedParam(isGrounded);
+            //CharacterView.SetWalkParam(isWalking);
+
+            //CharacterView.SetUpWeight(false);
         }
 
         protected virtual void FixedUpdate()

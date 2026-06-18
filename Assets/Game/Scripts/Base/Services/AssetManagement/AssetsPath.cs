@@ -3,11 +3,12 @@ namespace Game.Scripts.Base.Services.AssetManagement
     public static class AssetsPath
     {
         public const string GameUI = "GameUI";
+        public const string MiddleGameUI = "MiddleGameUI";
         public const string TutorialUI = "TutorialUI";
         public const string WindowCanvas = "WindowCanvas";
         public const string WindowBackground = "WindowBackground";
         public const string UICanvas = "UICanvas";
-        public const string GameField = "Game/GameField";
+        public const string MainGameField = "Game/MainGameField";
         public const string MiddleGameField = "Game/MiddleGameField";
         public const string Camera = "Game/Camera";
         public const string CursorManager = "Game/CursorManager";

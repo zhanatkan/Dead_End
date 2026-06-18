@@ -14,7 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: dd4732ccb2a2912458bdb6886eb75b0d
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 89627cee7f6b41e41bd44efccdfe52e7
+    m_Address: Maps_Canalization
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a3526ffac122d44189a4894d8dfaa09
+    m_Address: Maps_Forest
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b897b29e84b5012448c607889edc4a50
+    m_Address: Maps_Laboratory
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 933f710066b1cd54a93b927c44ecebd0, type: 2}
   m_SchemaSet:

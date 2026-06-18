@@ -5,9 +5,8 @@ using Game.Scripts.Base.Services.SaveDataHandler;
 using Game.Scripts.Game.Camera;
 using Game.Scripts.Game.Character.Player;
 using Game.Scripts.Game.GameplayControllers.Inventory;
-using Game.Scripts.Game.Managers.GameManager;
-using Game.Scripts.Game.Managers.MiddleManager;
-using Game.Scripts.Game.Maps;
+using Game.Scripts.Game.Managers.GameField;
+using Game.Scripts.Game.GameField;
 using Game.Scripts.Settings.Inventory;
 using UnityEngine;
 using VContainer;
@@ -20,7 +19,7 @@ namespace Game.Scripts.Base.Services.GameFactory
         private readonly IPauseService _pauseService;
         private readonly ISaveDataHandler _saveDataHandler;
         
-        private GameField _gameField;
+        private MainGameField _gameField;
         private MiddleGameField _middleGameField;
         private FirstPersonCamera _camera;
         private PlayerController _player;
@@ -34,14 +33,14 @@ namespace Game.Scripts.Base.Services.GameFactory
             _saveDataHandler = saveDataHandler;
         }
 
-        public GameField CreateGameField()
+        public MainGameField CreateGameField()
         {
             if (_gameField)
             {
                 return _gameField;
             }
             
-            _gameField = InstantiateRegistered(AssetsPath.GameField).GetComponent<GameField>();
+            _gameField = InstantiateRegistered(AssetsPath.MainGameField).GetComponent<MainGameField>();
             return _gameField;
         }
 

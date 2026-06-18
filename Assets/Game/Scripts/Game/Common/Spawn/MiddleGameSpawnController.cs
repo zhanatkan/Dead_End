@@ -1,7 +1,7 @@
 using Game.Scripts.Base.Services.GameFactory;
 using Game.Scripts.Base.Services.Settings;
 using Game.Scripts.Game.Character.Player;
-using Game.Scripts.Game.Managers.MiddleManager;
+using Game.Scripts.Game.Managers.GameField;
 using Game.Scripts.Settings.Inventory;
 using VContainer;
 

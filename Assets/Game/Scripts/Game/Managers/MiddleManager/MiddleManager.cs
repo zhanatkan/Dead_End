@@ -7,19 +7,22 @@ using Game.Scripts.Base.Services.SaveDataHandler;
 using Game.Scripts.Base.Services.SaveLoad;
 using Game.Scripts.Base.Services.WindowManager;
 using Game.Scripts.Base.Services.AssetManagement;
+using Game.Scripts.EventBus;
 using Game.Scripts.Base.States;
 using Game.Scripts.Game.Camera;
+using Game.Scripts.Game.Managers.GameField;
 using Game.Scripts.Game.Character.Input;
 using Game.Scripts.Game.Character.Player;
+using Game.Scripts.Game.Common.LevelChoice;
 using Game.Scripts.Game.Common.Spawn;
 using Game.Scripts.Game.GameplayControllers.Inventory;
-using Game.Scripts.UIScripts.Game;
+using Game.Scripts.UIScripts.MiddleGame;
 using VContainer;
 using VContainer.Unity;
 
 namespace Game.Scripts.Game.Managers.MiddleManager
 {
-    public class MiddleManager : IInitializable
+    public class MiddleManager : IInitializable, IEventReceiver<OnQuitGame>
     {
         private readonly StateMachine _stateMachine;
         private readonly ISaveDataHandler _saveDataHandler;
@@ -34,15 +37,17 @@ namespace Game.Scripts.Game.Managers.MiddleManager
         private readonly ISaveLoadService _saveLoadService;
         private readonly IBundleProvider _bundleProvider;
         private readonly FirstPersonCamera _camera;
-        private readonly GameUIManager _gameUIManager;
+        private readonly MiddleGameUIManager _middleGameUIManager;
         private readonly InventoryController _inventoryController;
+        private readonly LevelChoiceController _levelChoiceController;
         
         [Inject]
         public MiddleManager(StateMachine stateMachine, ISaveDataHandler saveDataHandler, MiddleGameField middleGameField,
             PlayerController player, IAudioService audioService, IInputService inputService,
             LoadingScreen loadingScreen, IWindowManager windowManager, MiddleGameSpawnController middleGameSpawnController,
             ISaveLoadService saveLoadService, IBundleProvider bundleProvider, CursorManager cursorManager,
-            FirstPersonCamera camera, GameUIManager gameUIManager, InventoryController inventoryController)
+            FirstPersonCamera camera, MiddleGameUIManager middleGameUIManager, InventoryController inventoryController,
+            LevelChoiceController levelChoiceController)
         {
             _stateMachine = stateMachine;
             _saveDataHandler = saveDataHandler;
@@ -57,24 +62,28 @@ namespace Game.Scripts.Game.Managers.MiddleManager
             _bundleProvider = bundleProvider;
             _cursorManager = cursorManager;
             _camera = camera;
-            _gameUIManager = gameUIManager;
+            _middleGameUIManager = middleGameUIManager;
             _inventoryController = inventoryController;
+            _levelChoiceController = levelChoiceController;
         }
 
         public async void Initialize()
         {
-            _middleGameField.Init();
+            EventBus<OnQuitGame>.Register(this);
+            
             _player.Init();
             _player.InitInput((ICharacterInput)_inputService);
             _camera.Init(_player);
             _player.InitPickupController(_camera);
+            _middleGameField.Init();
             
             await _bundleProvider.LoadBundle(AssetsPath.BundlesMainGamePath);
             _inventoryController.Init();
             
             _cursorManager.Init(true);
-            _gameUIManager.Init();
-            _middleGameField.Init();
+            _middleGameUIManager.Init();    
+
+            _levelChoiceController.Init(GoToNextState);
             
             InformSaveReaders();
             StartGameplay();
@@ -91,10 +100,27 @@ namespace Game.Scripts.Game.Managers.MiddleManager
 
         private void DeInit()
         {
+            EventBus<OnQuitGame>.UnRegister(this);
+            _bundleProvider.ReleaseBundle(AssetsPath.BundlesMainGamePath);
+            
             _player.DeInit();
             _cursorManager.DeInit();
             _middleGameField.DeInit();   
-            _gameUIManager.DeInit();
+            _middleGameUIManager.DeInit();
+        }
+
+        public void OnEvent(OnQuitGame e)
+        {
+#if UNITY_WEBGL && GAME_PUSH
+            GP_Game.GameplayStop();
+#endif
+            GoToPrevState();
+        }
+
+        private void GoToNextState()
+        {
+            DeInit();
+            _stateMachine.Enter<GameState, SceneName>(SceneName.MainGame);
         }
 
         private void GoToPrevState()

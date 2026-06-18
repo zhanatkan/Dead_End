@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Game.Scripts.Base.Services.AssetManagement;
 using Game.Scripts.Settings.Sprites;
 using Game.Scripts.UIScripts.Windows.Inventory;
+using Game.Scripts.UIScripts.Windows.LevelChoice;
+using Game.Scripts.UIScripts.Windows.Pause;
 using Game.Scripts.UIScripts.Windows.Settings;
 using UnityEngine;
 
@@ -49,10 +51,13 @@ namespace Game.Scripts.Base.Services.Bundles
                 WindowTypes = new HashSet<Type>()
                 {
                     typeof(InventoryWindow),
+                    typeof(LevelChoiceWindow),
+                    typeof(PauseWindow),
                 },
                 SpriteSetupTypes = new HashSet<Type>()
                 {
                     typeof(InventorySpriteSetup),
+                    typeof(LevelsSpriteSetup),
                 }
             },
         };

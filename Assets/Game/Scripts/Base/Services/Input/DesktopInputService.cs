@@ -61,5 +61,10 @@ namespace Game.Scripts.Base.Services.Input
         {
             return UnityEngine.Input.GetKeyDown(KeyCode.I);
         }
+
+        public bool GetUseInput()
+        {
+            return UnityEngine.Input.GetKeyDown(KeyCode.E);
+        }
     }
 }

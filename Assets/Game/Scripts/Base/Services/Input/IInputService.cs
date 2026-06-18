@@ -8,5 +8,6 @@ namespace Game.Scripts.Base.Services.Input
         bool GetRightMouse();
         bool GetMouseUp();
         Vector2 GetMouseMove();
+        bool GetUseInput();
     }
 }

@@ -10,8 +10,11 @@ namespace Game.Scripts.UIScripts.Game
 {
     public class GameUI : MonoBehaviour
     {
+        public event Action OnPauseButtonClick;
+        
         [Header("Inventory")]
         [SerializeField] private QuickSlotsWidget QuickSlotsWidget;
+        [SerializeField] private ButtonWithClickSound PauseButton;
         
         private IAudioService _audioService;
         private ISaveLoadService _saveLoadService;
@@ -29,6 +32,7 @@ namespace Game.Scripts.UIScripts.Game
         public void Init()
         {
             QuickSlotsWidget.Init(_quickInventoryController);
+            PauseButton.Init(_audioService, OnPauseButtonClicked);
         }
 
         public void DeInit()
@@ -39,6 +43,11 @@ namespace Game.Scripts.UIScripts.Game
         public void SetQuickWidgetOverrideCanvas(bool isActive)
         {
             QuickSlotsWidget.SetOverrideCanvas(isActive);
+        }
+
+        private void OnPauseButtonClicked()
+        {
+            OnPauseButtonClick?.Invoke();
         }
     }
 }
