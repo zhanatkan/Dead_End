@@ -7,13 +7,13 @@ public class HealthBar : MonoBehaviour
     public float healthAmount = 100;
     public GameObject deathPanel;
 
-    private EnemySpawner enemySpawner;
+    //private EnemySpawner enemySpawner;
 
     private PlayerHealth playerHealth;
     private bool isDead;
     private void Start()
     {
-        enemySpawner = FindObjectOfType<EnemySpawner>();
+        //enemySpawner = FindObjectOfType<EnemySpawner>();
         playerHealth = FindObjectOfType<PlayerHealth>();
         healthBar.fillAmount = healthAmount / 100;
         healthAmount = playerHealth.health;

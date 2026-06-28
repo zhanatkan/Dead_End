@@ -13,6 +13,7 @@ namespace Game.Scripts.Base.Services.Settings
         PlayerSettings PlayerSettings { get; }
         ItemsSetting ItemsSetting { get; }
         LevelSettings LevelSettings { get; }
+        BotsSetting BotsSetting { get; }
         
         void LoadSettings(Action onComplete);
     }

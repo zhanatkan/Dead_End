@@ -15,6 +15,7 @@ namespace Game.Scripts.Base.Services.Settings
         public PlayerSettings PlayerSettings { get; private set; }
         public ItemsSetting ItemsSetting { get; private set; }
         public LevelSettings LevelSettings { get; private set; }
+        public BotsSetting BotsSetting { get; private set; }
 
         [Inject]
         public SettingsProvider()
@@ -29,6 +30,7 @@ namespace Game.Scripts.Base.Services.Settings
             PlayerSettings = Resources.Load<PlayerSettings>(SettingsPath.PlayerSettings);
             ItemsSetting = Resources.Load<ItemsSetting>(SettingsPath.ItemsSettings);
             LevelSettings = Resources.Load<LevelSettings>(SettingsPath.LevelSettings);
+            BotsSetting = Resources.Load<BotsSetting>(SettingsPath.BotsSetting);
             
             onComplete?.Invoke();
         }

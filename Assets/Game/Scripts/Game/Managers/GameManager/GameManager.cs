@@ -15,6 +15,8 @@ using Game.Scripts.Game.Common.Spawn;
 using Game.Scripts.Game.GameplayControllers.Inventory;
 using Game.Scripts.Game.Managers.GameField;
 using Game.Scripts.UIScripts.Game;
+using Unity.Entities;
+using Unity.Scenes;
 using VContainer;
 using VContainer.Unity;
 

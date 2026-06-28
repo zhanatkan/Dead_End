@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae943837cb9fa64da0895cedab5c773, type: 3}
+  m_Name: BotsSetting
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Settings.BotsSetting
+  Monsters:
+  - {fileID: 11400000, guid: 7676c9fef6e03cf448fe4d80b935a92b, type: 2}

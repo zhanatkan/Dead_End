@@ -6,7 +6,7 @@ namespace Game.Scripts.Game.GameField
 {
     public class Map : MonoBehaviour
     {
-        [SerializeField] public LevelName LevelName { get; private set; }
+        [field: SerializeField] public LevelName LevelName { get; private set; }
         [field: SerializeField] public SpawnRange PlayerSpawnRange { get; private set; }
         //[field: SerializeField] public List<SpawnRange> BotsSpawnRange { get; private set; }
         
