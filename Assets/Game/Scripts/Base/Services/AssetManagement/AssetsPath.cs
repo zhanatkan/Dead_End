@@ -10,6 +10,7 @@ namespace Game.Scripts.Base.Services.AssetManagement
         public const string UICanvas = "UICanvas";
         public const string MainGameField = "Game/MainGameField";
         public const string MiddleGameField = "Game/MiddleGameField";
+        public const string EcsCreator = "Game/EcsCreator";
         public const string Camera = "Game/Camera";
         public const string CursorManager = "Game/CursorManager";
         public const string Player = "Game/Player";

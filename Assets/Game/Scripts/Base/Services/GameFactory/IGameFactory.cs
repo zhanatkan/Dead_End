@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Game.Scripts.Game.AIScripts.Common;
 using Game.Scripts.Game.Character.Player;
 using Game.Scripts.Game.Managers.GameField;
 using Game.Scripts.Game.Camera;
@@ -13,6 +14,7 @@ namespace Game.Scripts.Base.Services.GameFactory
     {
         MainGameField CreateGameField();
         MiddleGameField CreateMiddleGameField();
+        EcsCreator CreateEcsCreator();
         PlayerController CreatePlayer();
         FirstPersonCamera CreateCamera(Transform parent);
         Transform CreateWorldCanvas();

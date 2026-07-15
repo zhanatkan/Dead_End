@@ -8,6 +8,7 @@ using Game.Scripts.Base.Services.SaveDataHandler;
 using Game.Scripts.Base.Services.SaveLoad;
 using Game.Scripts.Base.States;
 using Game.Scripts.EventBus;
+using Game.Scripts.Game.AIScripts.Common;
 using Game.Scripts.Game.Camera;
 using Game.Scripts.Game.Character.Input;
 using Game.Scripts.Game.Character.Player;
@@ -15,8 +16,7 @@ using Game.Scripts.Game.Common.Spawn;
 using Game.Scripts.Game.GameplayControllers.Inventory;
 using Game.Scripts.Game.Managers.GameField;
 using Game.Scripts.UIScripts.Game;
-using Unity.Entities;
-using Unity.Scenes;
+using Leopotam.Ecs;
 using VContainer;
 using VContainer.Unity;
 
@@ -38,6 +38,7 @@ namespace Game.Scripts.Game.Managers.GameManager
         private readonly MainGameField _mainGameField;
         private readonly PlayerSpawnController _playerSpawnController;
         private readonly IBundleProvider _bundleProvider;
+        private readonly EcsCreator _ecsCreator;
         
         [Inject]
         public GameManager(ISaveLoadService saveLoadService, StateMachine stateMachine,
@@ -46,7 +47,8 @@ namespace Game.Scripts.Game.Managers.GameManager
             IInputService inputService, FirstPersonCamera camera,
             CursorManager cursorManager, InventoryController inventoryController,
             GameUIManager gameUIManager, MainGameField mainGameField,
-            PlayerSpawnController playerSpawnController, IBundleProvider bundleProvider)
+            PlayerSpawnController playerSpawnController, IBundleProvider bundleProvider,
+            EcsCreator ecsCreator)
         {
             _saveLoadService = saveLoadService;
             _saveDataHandler = saveDataHandler;
@@ -62,14 +64,18 @@ namespace Game.Scripts.Game.Managers.GameManager
             _mainGameField = mainGameField;
             _playerSpawnController = playerSpawnController;
             _bundleProvider = bundleProvider;
+            _ecsCreator = ecsCreator;
         }
 
         public async void Initialize()
         {
             EventBus<OnQuitGame>.Register(this);
+            _ecsCreator.Init();
             
             _player.Init();
             _player.InitInput((ICharacterInput)_inputService);
+            var playerEntity = _ecsCreator.EcsWorld.NewEntity();
+            playerEntity.Get<PlayerTag>().Transform = _player.transform;
             _camera.Init(_player);
             _player.InitPickupController(_camera);
             await _bundleProvider.LoadBundle(AssetsPath.BundlesMainGamePath);
@@ -100,6 +106,7 @@ namespace Game.Scripts.Game.Managers.GameManager
             _player.DeInit();
             _cursorManager.DeInit();
             _gameUIManager.DeInit();
+            _ecsCreator.DeInit();
         }
         
         public void OnEvent(OnQuitGame e)

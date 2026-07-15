@@ -79,6 +79,7 @@ namespace Game.Scripts.Base.States
                 builder.RegisterComponent(gameUI);
 
                 CreateGameField(builder);
+                CreateEcsCreator(builder);
 
                 _player = _gameFactory.CreatePlayer();
                 builder.RegisterComponent(_player).AsImplementedInterfaces().AsSelf();
@@ -120,6 +121,12 @@ namespace Game.Scripts.Base.States
         {
             var gameField = _gameFactory.CreateGameField();
             builder.RegisterComponent(gameField).AsImplementedInterfaces().AsSelf();
+        }
+
+        private void CreateEcsCreator(IContainerBuilder builder)
+        {
+            var ecsCreator = _gameFactory.CreateEcsCreator();
+            builder.RegisterComponent(ecsCreator).AsImplementedInterfaces().AsSelf();
         }
         
         private void InitDesktopInputService()

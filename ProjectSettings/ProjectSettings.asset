@@ -778,9 +778,9 @@ PlayerSettings:
     PS4: DOTWEEN
     PS5: DOTWEEN
     QNX: DOTWEEN
-    Standalone: WWISE_ADDRESSABLES_23_1_OR_LATER;LEVELPLAY_DEPENDENCIES_INSTALLED;DOTWEEN;UNITY_PHYSICS_CUSTOM
+    Standalone: WWISE_ADDRESSABLES_23_1_OR_LATER;LEVELPLAY_DEPENDENCIES_INSTALLED;DOTWEEN;UNITY_PHYSICS_CUSTOM;ENABLE_UNITY_PHYSICS_RUNTIME_DEBUG_DISPLAY
     VisionOS: DOTWEEN
-    WebGL: DOTWEEN;LEVELPLAY_DEPENDENCIES_INSTALLED;STARTER_ASSETS_PACKAGES_CHECKED
+    WebGL: DOTWEEN;LEVELPLAY_DEPENDENCIES_INSTALLED;STARTER_ASSETS_PACKAGES_CHECKED;UNITY_PHYSICS_CUSTOM;ENABLE_UNITY_PHYSICS_RUNTIME_DEBUG_DISPLAY
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
     iPhone: DOTWEEN
@@ -919,11 +919,11 @@ PlayerSettings:
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
   enableDirectStorage: 0
-  cloudProjectId: 1a56baf3-76cd-417a-bd48-50acdca9c179
+  cloudProjectId: cc29e18e-bd0f-4f6e-8b03-2eccd50551e4
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Dead end
-  organizationId: zhanatkan-binanc-gmail-com
+  projectName: Dead_End
+  organizationId: tamer222
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

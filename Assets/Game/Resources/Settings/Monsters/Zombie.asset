@@ -16,7 +16,16 @@ MonoBehaviour:
   Prefab:
   - {fileID: 7047464929666956578, guid: 24813ffca58290549b7220dbab2719f1, type: 3}
   - {fileID: 7487085660324770130, guid: a0a37efb5a74add46b94269659c4a9ff, type: 3}
+  - {fileID: 2724804521766088769, guid: 9b193ef663362354fa9345ff4a2ac0cf, type: 3}
   MinCount: 10
   MaxCount: 21
-  Center: {x: 0, y: 2, z: 0}
-  Radius: 10
+  PatrolSpeed: 3
+  ChaseSpeed: 4
+  RotationSpeed: 10
+  VisionRadius: 15
+  VisionAngle: 90
+  VisionMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  MinAlertTime: 3
+  MaxAlertTime: 8

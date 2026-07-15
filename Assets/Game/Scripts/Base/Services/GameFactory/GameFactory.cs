@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Game.Scripts.Base.Services.AssetManagement;
 using Game.Scripts.Base.Services.Pause;
 using Game.Scripts.Base.Services.SaveDataHandler;
+using Game.Scripts.Game.AIScripts.Common;
 using Game.Scripts.Game.Camera;
 using Game.Scripts.Game.Character.Player;
 using Game.Scripts.Game.GameplayControllers.Inventory;
@@ -21,6 +22,7 @@ namespace Game.Scripts.Base.Services.GameFactory
         
         private MainGameField _gameField;
         private MiddleGameField _middleGameField;
+        private EcsCreator _ecsCreator;
         private FirstPersonCamera _camera;
         private PlayerController _player;
         
@@ -52,6 +54,17 @@ namespace Game.Scripts.Base.Services.GameFactory
             }
             _middleGameField = InstantiateRegistered(AssetsPath.MiddleGameField).GetComponent<MiddleGameField>();
             return _middleGameField;
+        }
+        
+        public EcsCreator CreateEcsCreator()
+        {
+            if (_ecsCreator)
+            {
+                return _ecsCreator;
+            }
+            
+            _ecsCreator = InstantiateRegistered(AssetsPath.EcsCreator).GetComponent<EcsCreator>();
+            return _ecsCreator;
         }
 
         public FirstPersonCamera CreateCamera(Transform parent)

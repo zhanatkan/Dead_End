@@ -7,6 +7,27 @@
       "dependencies": {},
       "hash": "a9e27c03d411d2fca01cc7410c24c97cd77cb539"
     },
+    "com.leopotam.ecs": {
+      "version": "https://github.com/Leopotam/ecs.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b256e570bdb15a0bea9e664af32953068a2ac1e5"
+    },
+    "com.leopotam.ecs-ui": {
+      "version": "https://github.com/Leopotam/ecs-ui.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8c8148b306fce1a3efff776c2cf2da8991c4780d"
+    },
+    "com.leopotam.ecs-unityintegration": {
+      "version": "https://github.com/Leopotam/ecs-unityintegration.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "063f130aeecea526beaca172ea56bd046781e378"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -64,37 +85,6 @@
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
-    },
-    "com.unity.entities": {
-      "version": "6.4.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.burst": "1.8.23",
-        "com.unity.collections": "6.4.0",
-        "com.unity.mathematics": "1.3.2",
-        "com.unity.nuget.mono-cecil": "1.11.5",
-        "com.unity.profiling.core": "1.0.2",
-        "com.unity.scriptablebuildpipeline": "2.4.3",
-        "com.unity.serialization": "3.1.2",
-        "com.unity.test-framework.performance": "3.0.3",
-        "com.unity.modules.assetbundle": "1.0.0",
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.uielements": "1.0.0",
-        "com.unity.modules.unityanalytics": "1.0.0",
-        "com.unity.modules.unitywebrequest": "1.0.0"
-      }
-    },
-    "com.unity.entities.graphics": {
-      "version": "6.4.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.entities": "6.4.0",
-        "com.unity.modules.particlesystem": "1.0.0",
-        "com.unity.render-pipelines.core": "14.0.10"
-      }
     },
     "com.unity.ext.nunit": {
       "version": "2.0.5",
@@ -182,7 +172,7 @@
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.6",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -199,21 +189,6 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.physics": {
-      "version": "1.4.6",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.burst": "1.8.28",
-        "com.unity.entities": "1.4.6",
-        "com.unity.collections": "2.6.6",
-        "com.unity.mathematics": "1.3.2",
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.test-framework": "1.4.6",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      },
       "url": "https://packages.unity.com"
     },
     "com.unity.probuilder": {
@@ -283,16 +258,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.serialization": {
-      "version": "3.1.5",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.burst": "1.8.13",
-        "com.unity.collections": "2.4.2"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.services.analytics": {
       "version": "6.3.0",
       "depth": 0,
@@ -343,7 +308,7 @@
     },
     "com.unity.test-framework.performance": {
       "version": "3.2.0",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.33",
