@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae943837cb9fa64da0895cedab5c773, type: 3}
+  m_Name: BotsSetting
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Settings.BotsSetting
+  Monsters:
+  - {fileID: 11400000, guid: 7676c9fef6e03cf448fe4d80b935a92b, type: 2}
+  - {fileID: 11400000, guid: 7179ef92adbe13743a35b72a293f5727, type: 2}
+  - {fileID: 11400000, guid: 37d76447c78bad444bde9280a7fbc381, type: 2}
+  - {fileID: 11400000, guid: e2cfe5cd108d60a4795fab39794468ae, type: 2}
+  - {fileID: 11400000, guid: 3cbecb92341cbe6419f264d666e7ac31, type: 2}
+  - {fileID: 11400000, guid: 04cd140bbf9392743b9bc42457d7b14d, type: 2}
+  - {fileID: 11400000, guid: eb3fbf381d5cf9541a0f70532b2025c3, type: 2}
+  - {fileID: 11400000, guid: 119ebe5802dddf0449691aecd029d934, type: 2}
+  - {fileID: 11400000, guid: 7e73d6ce0f7ecbe45873cd980d37ede5, type: 2}
+  - {fileID: 11400000, guid: b6219f97c44b0724694e4c30cdc9352c, type: 2}
+  - {fileID: 11400000, guid: 598fd257f006c5e47a2d1cb9ad3be9bd, type: 2}
+  - {fileID: 11400000, guid: b7a6501d130ed0b469709830b7a39c71, type: 2}
+  - {fileID: 11400000, guid: 814d612a4de20004aa246c1300db6f39, type: 2}

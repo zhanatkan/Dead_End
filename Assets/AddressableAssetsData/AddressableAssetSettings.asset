@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
+  m_Name: AddressableAssetSettings
+  m_EditorClassIdentifier: 
+  m_DefaultGroup: dd4732ccb2a2912458bdb6886eb75b0d
+  m_currentHash:
+    serializedVersion: 2
+    Hash: 4c03c2fc1fd019c2af105b41497b6e51
+  m_OptimizeCatalogSize: 0
+  m_BuildRemoteCatalog: 0
+  m_CatalogRequestsTimeout: 0
+  m_DisableCatalogUpdateOnStart: 0
+  m_InternalIdNamingMode: 0
+  m_InternalBundleIdMode: 1
+  m_AssetLoadMode: 0
+  m_BundledAssetProviderType:
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider
+  m_AssetBundleProviderType:
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider
+  m_IgnoreUnsupportedFilesInBuild: 0
+  m_UniqueBundleIds: 0
+  m_EnableJsonCatalog: 0
+  m_NonRecursiveBuilding: 1
+  m_AllowNestedBundleFolders: 0
+  m_CCDEnabled: 0
+  m_maxConcurrentWebRequests: 3
+  m_UseUWRForLocalBundles: 0
+  m_BundleTimeout: 0
+  m_BundleRetryCount: 0
+  m_BundleRedirectLimit: -1
+  m_SharedBundleSettings: 0
+  m_SharedBundleSettingsCustomGroupIndex: 0
+  m_simulatedLoadDelay: 0.1
+  m_ContiguousBundles: 1
+  m_StripUnityVersionFromBundleBuild: 0
+  m_DisableVisibleSubAssetRepresentations: 0
+  m_BuiltInBundleNaming: 0
+  mBuiltInBundleCustomNaming: 
+  m_MonoScriptBundleNaming: 0
+  m_CheckForContentUpdateRestrictionsOption: 0
+  m_MonoScriptBundleCustomNaming: 
+  m_RemoteCatalogBuildPath:
+    m_Id: 
+  m_RemoteCatalogLoadPath:
+    m_Id: 
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
+  m_CustomContentStateBuildPath: 
+  m_ContentStateBuildPath: 
+  m_BuildAddressablesWithPlayerBuild: 0
+  m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
+  m_GroupAssets:
+  - {fileID: 11400000, guid: e437f3dba0844ce42ae1438472c11469, type: 2}
+  - {fileID: 11400000, guid: 9f818567db8c8d9448a7e9a06546a9d5, type: 2}
+  - {fileID: 11400000, guid: f2bd239554e469c4580d40674805efd5, type: 2}
+  - {fileID: 11400000, guid: bdf24fadf0d95564cb43f0f283c5d36b, type: 2}
+  m_BuildSettings:
+    m_LogResourceManagerExceptions: 1
+    m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
+  m_ProfileSettings:
+    m_Profiles:
+    - m_InheritedParent: 
+      m_Id: 4f9e7a980e0c73a4bad1a16a5e242731
+      m_ProfileName: Default
+      m_Values:
+      - m_Id: 2c79c90e7e59f86478a2207da66d37fc
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: 3fbf6581237d05d47a0f5cab01bec588
+        m_Value: <undefined>
+      - m_Id: 688047e768845314e9d7ba3a4ca5662f
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: 6b63a1fb0bf97cb40b6b903d43604e91
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: 96db459d00b9cb640ae47681f3c83254
+        m_Value: 'ServerData/[BuildTarget]'
+    m_ProfileEntryNames:
+    - m_Id: 2c79c90e7e59f86478a2207da66d37fc
+      m_Name: Local.LoadPath
+      m_InlineUsage: 0
+    - m_Id: 3fbf6581237d05d47a0f5cab01bec588
+      m_Name: Remote.LoadPath
+      m_InlineUsage: 0
+    - m_Id: 688047e768845314e9d7ba3a4ca5662f
+      m_Name: Local.BuildPath
+      m_InlineUsage: 0
+    - m_Id: 6b63a1fb0bf97cb40b6b903d43604e91
+      m_Name: BuildTarget
+      m_InlineUsage: 0
+    - m_Id: 96db459d00b9cb640ae47681f3c83254
+      m_Name: Remote.BuildPath
+      m_InlineUsage: 0
+    m_ProfileVersion: 1
+  m_LabelTable:
+    m_LabelNames:
+    - default
+    - Bundles/MainMenu/Windows
+    - Bundles/MainMenu/SpriteSetups
+    - Bundles/MainGame/Windows
+    - Bundles/MainGame/SpriteSetups
+    - Bundles/Common/Windows
+    - Bundles/Common/SpriteSetups
+  m_SchemaTemplates: []
+  m_GroupTemplateObjects:
+  - {fileID: 11400000, guid: 311948cab5f4a5c4a87167280a8e24fa, type: 2}
+  m_InitializationObjects: []
+  m_CertificateHandlerType:
+    m_AssemblyName: 
+    m_ClassName: 
+  m_ActivePlayerDataBuilderIndex: 2
+  m_DataBuilders:
+  - {fileID: 11400000, guid: af822be16b38a7742b38072fb51de2ad, type: 2}
+  - {fileID: 11400000, guid: f467741ec2219554cb709bcaf926329d, type: 2}
+  - {fileID: 11400000, guid: 6dac56ae69c2b3e429b226b14b80752c, type: 2}
+  m_ActiveProfileId: 4f9e7a980e0c73a4bad1a16a5e242731

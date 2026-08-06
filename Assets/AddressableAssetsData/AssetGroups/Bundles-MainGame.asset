@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Bundles-MainGame
+  m_EditorClassIdentifier: 
+  m_GroupName: Bundles-MainGame
+  m_GUID: e613234b09f66fb488e160ef80056bf2
+  m_SerializeEntries:
+  - m_GUID: 15728256ac7328f4f9b932f7d900d9b6
+    m_Address: LevelChoiceWindow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundles/MainGame/Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2bdc3423375d5fa4693b82a4bc0f8c04
+    m_Address: InventoryWindow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundles/MainGame/Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 433cf4dc50cfe2642893b849eff0313c
+    m_Address: InventorySpriteSetup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundles/MainGame/SpriteSetups
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3c990b209f227d48a3b21395e95c283
+    m_Address: PauseWindow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundles/MainGame/Windows
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc7167d029778da418b79db4627d1c55
+    m_Address: LevelsSpriteSetup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundles/MainGame/SpriteSetups
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 933f710066b1cd54a93b927c44ecebd0, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a513d1562e9c6b94880c7e64a4d5f91a, type: 2}
+    - {fileID: 11400000, guid: 991da78defd6a564c8d76bc93f25920e, type: 2}
