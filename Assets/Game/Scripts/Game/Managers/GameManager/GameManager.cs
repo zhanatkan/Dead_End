@@ -74,8 +74,13 @@ namespace Game.Scripts.Game.Managers.GameManager
             
             _player.Init();
             _player.InitInput((ICharacterInput)_inputService);
+            
             var playerEntity = _ecsCreator.EcsWorld.NewEntity();
             playerEntity.Get<PlayerTag>().Transform = _player.transform;
+            playerEntity.Get<NoiseEmitterComponent>().NoiseRadius = 0f;
+            playerEntity.Get<HealthComponent>().MaxHealth = 100f;
+            playerEntity.Get<HealthComponent>().CurrentHealth = 100f;
+            
             _camera.Init(_player);
             _player.InitPickupController(_camera);
             await _bundleProvider.LoadBundle(AssetsPath.BundlesMainGamePath);

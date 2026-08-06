@@ -8,7 +8,8 @@ namespace Game.Scripts.Game.AIScripts.Common
     {
         Patrol,
         Chase,
-        Alert 
+        Alert,
+        Attack
     }
 
     public struct BotComponent
@@ -23,6 +24,7 @@ namespace Game.Scripts.Game.AIScripts.Common
         public BotState CurrentState;
         public Vector3 TargetPosition;
         public float Timer;
+        public float AttackCooldownTimer;
     }
 
     public struct PlayerTag

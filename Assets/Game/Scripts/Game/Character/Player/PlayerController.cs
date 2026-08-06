@@ -69,6 +69,23 @@ namespace Game.Scripts.Game.Character.Player
                 PickupController.TryPickup();
             }
         }
+        
+        public float GetCurrentNoiseRadius()
+        {
+            if (CharacterMovementState == CharacterMovementState.Idle)
+            {
+                return 0f;
+            }
+
+            if (CharacterJumpState == CharacterJumpState.Fall)
+            {
+                return 2f;
+            }
+
+            bool isSprinting = CharacterInput.MovementDirection.magnitude > 0.8f;
+
+            return isSprinting ? 12f : 5f; 
+        }
 
         protected override void UpdateRunState()
         {

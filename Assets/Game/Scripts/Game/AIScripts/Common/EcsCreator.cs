@@ -1,8 +1,10 @@
-using System;
 using Game.Scripts.Base.Services.Settings;
 using Game.Scripts.Game.AIScripts.Behaviour;
+using Game.Scripts.Game.AIScripts.Player;
+using Game.Scripts.Game.AIScripts.Health;
 using Game.Scripts.Settings;
 using Game.Scripts.Game.AIScripts.Spawn;
+using Game.Scripts.Game.Character.Player;
 using UnityEngine;
 using Leopotam.Ecs;
 using VContainer;
@@ -12,6 +14,7 @@ namespace Game.Scripts.Game.AIScripts.Common
     public class EcsCreator : MonoBehaviour
     {
         private BotsSetting _botsSetting;
+        private PlayerController _playerController;
         
         public EcsWorld EcsWorld {get; private set;}
         
@@ -19,9 +22,11 @@ namespace Game.Scripts.Game.AIScripts.Common
         private EcsSystems _fixedUpdateSystems;
 
         [Inject]
-        public void Construct(ISettingsProvider settingsProvider)
+        public void Construct(ISettingsProvider settingsProvider, 
+            PlayerController playerController)
         {
             _botsSetting = settingsProvider.BotsSetting;
+            _playerController = playerController;
         }
 
         public void Init()
@@ -35,9 +40,14 @@ namespace Game.Scripts.Game.AIScripts.Common
 #endif
             _updateSystems
                 .Add(new SpawnMonsterSystem()) 
+                .Add(new PlayerNoiseSystem(_playerController))
                 .Add(new BotVisionSystem())
+                .Add(new BotHearingSystem())
                 .Add(new BotBehaviorSystem())
-                .OneFrame<MapLoadedEvent>()    
+                .Add(new BotAttackSystem())
+                .Add(new HealthSystem())
+                .OneFrame<MapLoadedEvent>()  
+                .OneFrame<TakeDamageEvent>()
                 .Inject(_botsSetting);
             
             _updateSystems.Init();

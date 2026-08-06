@@ -61,6 +61,10 @@ namespace Game.Scripts.Game.AIScripts.Spawn
                         ref var state = ref monsterEntity.Get<BotStateComponent>();
                         state.CurrentState = BotState.Patrol;
                         
+                        ref var health = ref monsterEntity.Get<HealthComponent>();
+                        health.MaxHealth = botSetting.MaxHealth;
+                        health.CurrentHealth = botSetting.MaxHealth;
+                        
                         int initialRangeIndex = Random.Range(0, map.BotsSpawnRange.Count);
                         state.TargetPosition = map.BotsSpawnRange[initialRangeIndex].SpawnPosition();
                         state.Timer = 0f;

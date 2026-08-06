@@ -1,3 +1,4 @@
+using System;
 using Leopotam.Ecs;
 using UnityEngine;
 using Game.Scripts.Game.AIScripts.Common;
@@ -35,12 +36,24 @@ namespace Game.Scripts.Game.AIScripts.Behaviour
                     float angle = Vector3.Angle(bot.Transform.forward, dirToPlayer.normalized);
                     if (angle <= bot.Setting.VisionAngle * 0.5f)
                     {
-                        if (Physics.Raycast(botPos + Vector3.up * 1.5f, dirToPlayer.normalized, out RaycastHit hit, bot.Setting.VisionRadius, bot.Setting.VisionMask))
+                        Vector3 rayOrigin = botPos + Vector3.up * 1.5f;
+
+                        RaycastHit[] hits = Physics.RaycastAll(rayOrigin, dirToPlayer.normalized, distanceToPlayer, bot.Setting.VisionMask);
+                        Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+                        foreach (var hit in hits)
                         {
-                            if (hit.transform == playerTransform)
+                            if (hit.transform == bot.Transform || hit.transform.root == bot.Transform.root || 
+                                hit.transform.gameObject.layer == bot.Setting.BotLayerMask)
+                            {
+                                continue;
+                            }
+
+                            if (hit.transform == playerTransform || hit.transform.IsChildOf(playerTransform))
                             {
                                 canSeePlayer = true;
                             }
+                            break;
                         }
                     }
                 }
@@ -52,8 +65,8 @@ namespace Game.Scripts.Game.AIScripts.Behaviour
                 else if (state.CurrentState == BotState.Chase)
                 {
                     state.CurrentState = BotState.Alert;
-                    state.Timer = Random.Range(bot.Setting.MinAlertTime, bot.Setting.MaxAlertTime);
-                    state.TargetPosition = playerPos + Random.insideUnitSphere * 3f;
+                    state.Timer = UnityEngine.Random.Range(bot.Setting.MinAlertTime, bot.Setting.MaxAlertTime);
+                    state.TargetPosition = playerPos + UnityEngine.Random.insideUnitSphere * 3f;
                     state.TargetPosition.y = botPos.y;
                 }
             }
